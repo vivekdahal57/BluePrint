@@ -1,14 +1,9 @@
-from behave import fixture
+import os
 from seleniumwire import webdriver
-# from selenium import webdriver
-
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
-from page_object.pages import BasePage, BlueprintLoginPage
-import os
 
-base_page = BasePage(None)
-login_page = BlueprintLoginPage(base_page)
+from .global_objects import *
 
 directory = os.path.dirname(os.path.dirname(__file__))
 

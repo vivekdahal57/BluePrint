@@ -9,6 +9,6 @@ Finally, Execute this with following command:
 
 $  behave -f allure_behave.formatter:AllureFormatter -o reportTest\ ./features
 
-$ allure serve \reportTest
+$ allure serve reportTest
 
 report will be generated to C:\Users\shail\AppData\Local\Temp\3609749911560213999\allure-report
