@@ -1,5 +1,7 @@
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
@@ -80,7 +82,7 @@ class BasePage(object):
 
     def reload_page(self):
         # It reloads the page
-        self._web_driver.driver.refresh(500)
+        self._web_driver.driver.refresh()
 
     def close_browser(self):
         # It closes the browser
@@ -107,3 +109,19 @@ class BasePage(object):
 
     def scroll_to(self, element):
         ActionChains(self._web_driver.driver).move_to_element(self.find_element(element)).perform()
+
+    def double_click_element(self, element):
+        ActionChains(self._web_driver.driver).double_click(self.find_element(element)).perform()
+
+    def select_value_from_options(self, element, value):
+        select = Select(self.find_element(element))
+        select.select_by_visible_text(value)
+
+    def does_element_exist(self, element):
+        try:
+            self.find_element(element)
+        except NoSuchElementException:
+            return False
+        except TimeoutException:
+            return False
+        return True

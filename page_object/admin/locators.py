@@ -23,10 +23,13 @@ class AdminDashboardPageLocator:
         pass
 
 
-class AdminUserPageLocator:
+class AdminUserListPageLocator:
     user_title_text = (By.XPATH, "//h1[contains(text(),'Select user to change')]")
     user_add_button = (By.XPATH, "//a[@class='addlink']")
-    user_change_success = (By.XPATH, "//li[@class='success']")
+    user_change_success = (By.CSS_SELECTOR, "li.success")
+    user_search_field = (By.ID, "searchbar")
+    user_search_button = (By.XPATH, "//*[@id='changelist-search']/div/input[2]")
+    user_search_output = (By.XPATH, "//table[@id='result_list']/tbody/tr[1]/th[1]/a")
 
     def __init__(self):
         pass
@@ -58,6 +61,40 @@ class AdminAddUserPageLocator:
     add_user_permission_search_text = (By.ID, "id_permissions_input")
     add_user_permission_option = (By.XPATH, "//*[@name='user_permissions_old']/option[1]")
     add_user_delete_button = (By.XPATH, "//a[@class='deletelink']")
+    confirm_delete = (By.XPATH, "//form/div[1]/input[2]")
+
+    def __init__(self):
+        pass
+
+
+class AdminUserProfileLocator:
+    user_profile_title_text = (By.XPATH, "//*[@id='content']/h1")
+    user_profile_add_profile_button = (By.XPATH, "//*[@id='content-main']/ul/li[1]/a")
+    user_profile_search_field = (By.ID, "searchbar")
+    user_profile_search_button = (By.XPATH, "//*[@id='changelist-search']/div/input[2]")
+    user_profile_output = (By.XPATH, "//table[@id='result_list']/tbody/tr[1]/th[1]/a")
+    user_profile_change_success = (By.XPATH, "//li[@class='success']")
+
+    def __init__(self):
+        pass
+
+
+class AdminAddUserProfileLocator:
+    add_profile_title_text = (By.XPATH, "//*[@id='content']/h1")
+    add_profile_change_profile_title_text = (By.XPATH, "//*[@id='content']/h1")
+    add_profile_company_field = (By.ID, "id_company")
+    add_profile_image_browse = (By.ID, "id_picture")
+    add_profile_users_dropdown = (By.ID, "id_user")
+    add_profile_agreed_tos_check = (By.ID, "id_agreed_terms_of_service")
+    add_profile_blueprint_tour_check = (By.ID, "id_has_toured_blueprint")
+    add_profile_reactor_tour_check = (By.ID, "id_has_toured_reactor")
+    add_profile_multiple_login_check = (By.ID, "id_allow_multiple_login")
+    add_profile_save_button = (By.NAME, "_save")
+    add_profile_delete_button = (By.XPATH, "//a[@class='deletelink']")
+
+    @staticmethod
+    def select_user(username):
+        return "//*[@id='id_user']/option[contains(text(),'" + username + "')]"
 
     def __init__(self):
         pass

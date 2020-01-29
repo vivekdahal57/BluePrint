@@ -8,10 +8,11 @@ from page_object.driver_factory_fixture import browser_chrome, browser_firefox, 
 """ 
 before all is called in order to execute before any tests starts executing
 its parameters can ve either provided in ini file or from the command line
+We are using before_feature here to use different instances for each feature level testing
 """
 
 
-def before_all(context):
+def before_feature(context, feature):
     if context.config.userdata.get('browser') == "chrome":
         if context.config.userdata.get('headless').lower() == "true":
             use_fixture(browser_chrome_headless, context)

@@ -20,10 +20,15 @@ class BlueprintLoginPage(BasePage):
         self._web_driver.click_element(blueprint_login_locator.sign_in_button)
 
     def verify_login_fail(self):
-        self._web_driver.verify_text(blueprint_login_locator.incorrect_login_message, 'Incorrect email and/or password.')
+        self._web_driver.verify_text(blueprint_login_locator.incorrect_login_message,
+                                     'Incorrect email and/or password.')
 
     def verify_login_pass(self):
-        self._web_driver.click_element(blueprint_dashboard_locator.dashboard_blueprint_select_half_button)
+        time.sleep(2)
+        is_visible = self._web_driver.does_element_exist(
+            blueprint_dashboard_locator.dashboard_blueprint_select_half_button)
+        if is_visible:
+            self._web_driver.click_element(blueprint_dashboard_locator.dashboard_blueprint_select_half_button)
         self._web_driver.verify_text(blueprint_dashboard_locator.dashboard_title_text, 'All Collections')
 
 
@@ -33,6 +38,19 @@ class BlueprintDashboardPage(BasePage):
     def __init__(self, obj):
         self._web_driver = obj
         self.blueprint_login_page = BlueprintLoginPage(obj)
+
+    def skip_tour(self, is_accept):
+        is_visible = self._web_driver.does_element_exist(blueprint_dashboard_locator.tos_skip_tour_link)
+        if is_visible:
+            self._web_driver.click_element(blueprint_dashboard_locator.tos_skip_tour_link)
+            self.accept_tos_and_continue(is_accept)
+
+    def accept_tos_and_continue(self, is_accept):
+        is_checked = self._web_driver.find_element(blueprint_dashboard_locator.tos_i_agree).is_selected()
+        if not is_checked and is_accept:
+            self._web_driver.click_element(blueprint_dashboard_locator.tos_i_agree)
+        self._web_driver.click_element(blueprint_dashboard_locator.tos_agree_continue)
+        self._web_driver.click_element(blueprint_dashboard_locator.tos_get_started)
 
     def logout(self):
         self._web_driver.wait_until_element_disappear(blueprint_dashboard_locator.loading_text)

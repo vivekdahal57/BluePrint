@@ -1,11 +1,15 @@
+from selenium.webdriver.support.select import Select
+
 from page_object.global_objects import *
-from page_object.admin.locators import AdminLoginPageLocator, AdminDashboardPageLocator, \
-    AdminUserPageLocator, AdminAddUserPageLocator
+from page_object.admin.locators import AdminLoginPageLocator, AdminDashboardPageLocator, AdminUserListPageLocator, \
+    AdminAddUserPageLocator, AdminUserProfileLocator, AdminAddUserProfileLocator
 
 admin_login_locator = AdminLoginPageLocator()
 admin_dashboard_locator = AdminDashboardPageLocator()
-admin_users_list_locator = AdminUserPageLocator()
+admin_users_list_locator = AdminUserListPageLocator()
 admin_add_user_locator = AdminAddUserPageLocator()
+admin_user_profile_locator = AdminUserProfileLocator()
+admin_add_user_profile_locator = AdminAddUserProfileLocator()
 
 
 class AdminLoginPage(BasePage):
@@ -48,6 +52,10 @@ class AdminDashboardPage(BasePage):
         self._web_driver.scroll_to(admin_dashboard_locator.user_link)
         self._web_driver.click_element(admin_dashboard_locator.user_link)
 
+    def goto_users_profile_list(self):
+        self._web_driver.scroll_to(admin_dashboard_locator.user_profile_link)
+        self._web_driver.click_element(admin_dashboard_locator.user_profile_link)
+
 
 class AdminUsersListPage(BasePage):
     def __init__(self, obj):
@@ -64,6 +72,12 @@ class AdminUsersListPage(BasePage):
         self._web_driver.verify_text(admin_users_list_locator.user_change_success,
                                      "The user " + username + " was changed successfully.")
 
+    def search_and_land_to_change_user(self, username):
+        self._web_driver.send_value(admin_users_list_locator.user_search_field, username)
+        self._web_driver.click_element(admin_users_list_locator.user_search_button)
+        self._web_driver.verify_text(admin_users_list_locator.user_search_output, username)
+        self._web_driver.click_element(admin_users_list_locator.user_search_output)
+
 
 class AdminAddUserPage(BasePage):
     def __init__(self, obj):
@@ -78,16 +92,18 @@ class AdminAddUserPage(BasePage):
     def select_group(self, groups):
         for group in groups:
             self._web_driver.send_value(admin_add_user_locator.add_user_group_search_text, group)
-            if self._web_driver.verify_text(admin_add_user_locator.add_user_group_option, group):
-                self._web_driver.click_element(admin_add_user_locator.add_user_group_option)
-                self._web_driver.click_element(admin_add_user_locator.add_user_group_add_arrow_button)
+            time.sleep(2)
+            # if self._web_driver.verify_text(admin_add_user_locator.add_user_group_option, group):
+            self._web_driver.double_click_element(admin_add_user_locator.add_user_group_option)
+            # self._web_driver.click_element(admin_add_user_locator.add_user_group_add_arrow_button)
 
     def select_permission(self, permissions):
         for permission in permissions:
             self._web_driver.send_value(admin_add_user_locator.add_user_permission_search_text, permission)
-            if self._web_driver.verify_text(admin_add_user_locator.add_user_permission_option, permission):
-                self._web_driver.click_element(admin_add_user_locator.add_user_permission_option)
-                self._web_driver.click_element(admin_add_user_locator.add_user_permission_add_arrow_button)
+            time.sleep(2)
+            # if self._web_driver.verify_text(admin_add_user_locator.add_user_permission_option, permission):
+            self._web_driver.double_click_element(admin_add_user_locator.add_user_permission_option)
+            # self._web_driver.click_element(admin_add_user_locator.add_user_permission_add_arrow_button)
 
     def create_user(self, username, password):
         self._web_driver.send_value(admin_add_user_locator.add_user_username_field, username)
@@ -101,15 +117,76 @@ class AdminAddUserPage(BasePage):
         self._web_driver.send_value(admin_add_user_locator.add_user_last_name_field, last_name)
         self._web_driver.send_value(admin_add_user_locator.add_user_email_field, email)
         is_checked = self._web_driver.find_element(admin_add_user_locator.add_user_active_check).is_selected()
-        if not is_checked & is_active:
+        if not is_checked and is_active:
             self._web_driver.click_element(admin_add_user_locator.add_user_active_check)
         is_checked = self._web_driver.find_element(admin_add_user_locator.add_user_super_user_check).is_selected()
-        if not is_checked & is_super_user:
+        if not is_checked and is_super_user:
             self._web_driver.click_element(admin_add_user_locator.add_user_super_user_check)
-
         is_checked = self._web_driver.find_element(admin_add_user_locator.add_user_staff_check).is_selected()
-        if not is_checked & is_staff:
+        if not is_checked and is_staff:
             self._web_driver.click_element(admin_add_user_locator.add_user_staff_check)
         self.select_group(groups)
         self.select_permission(permissions)
         self._web_driver.click_element(admin_add_user_locator.add_user_save_button)
+
+    def delete_user(self):
+        self._web_driver.click_element(admin_add_user_locator.add_user_delete_button)
+        self._web_driver.click_element(admin_add_user_locator.confirm_delete)
+
+
+class AdminUserProfileListPage(BasePage):
+    def __init__(self, obj):
+        self._web_driver = obj
+
+    def verify_user_profile_page(self):
+        self._web_driver.verify_text(admin_user_profile_locator.user_profile_title_text,
+                                     "Select user profile to change")
+
+    def goto_add_user_profile_page(self):
+        self._web_driver.scroll_to(admin_user_profile_locator.user_profile_add_profile_button)
+        self._web_driver.click_element(admin_user_profile_locator.user_profile_add_profile_button)
+
+    def verify_user_profile_change_success(self, username):
+        self._web_driver.verify_text(admin_user_profile_locator.user_profile_change_success,
+                                     "The user profile " + username + " was changed successfully.")
+
+    def search_and_land_to_change_user_profile(self, username):
+        self._web_driver.send_value(admin_users_list_locator.user_search_field, username)
+        self._web_driver.click_element(admin_users_list_locator.user_search_button)
+        self._web_driver.verify_text(admin_users_list_locator.user_search_output, username)
+        self._web_driver.click_element(admin_users_list_locator.user_search_output)
+
+
+class AdminAddUserProfilePage(BasePage):
+    def __init__(self, obj):
+        self._web_driver = obj
+
+    def verify_add_user_profile_page(self):
+        self._web_driver.verify_text(admin_add_user_profile_locator.add_profile_title_text, "Add user profile")
+
+    def verify_change_user_page(self):
+        self._web_driver.verify_text(admin_add_user_profile_locator.add_profile_change_profile_title_text,
+                                     "Change user profile")
+
+    def add_user_profile(self, company, username, profile_picture, has_agreed_tos, has_toured_blueprint,
+                         has_toured_reactor, is_multiple_login):
+        self._web_driver.send_value(admin_add_user_profile_locator.add_profile_company_field, company)
+        self._web_driver.send_value(admin_add_user_profile_locator.add_profile_image_browse, profile_picture)
+        self._web_driver.select_value_from_options(admin_add_user_profile_locator.add_profile_users_dropdown, username)
+        is_checked = self._web_driver.find_element(
+            admin_add_user_profile_locator.add_profile_agreed_tos_check).is_selected()
+        if not is_checked and has_agreed_tos:
+            self._web_driver.click_element(admin_add_user_profile_locator.add_profile_agreed_tos_check)
+        is_checked = self._web_driver.find_element(
+            admin_add_user_profile_locator.add_profile_blueprint_tour_check).is_selected()
+        if not is_checked and has_toured_blueprint:
+            self._web_driver.click_element(admin_add_user_profile_locator.add_profile_blueprint_tour_check)
+        is_checked = self._web_driver.find_element(
+            admin_add_user_profile_locator.add_profile_reactor_tour_check).is_selected()
+        if not is_checked and has_toured_reactor:
+            self._web_driver.click_element(admin_add_user_profile_locator.add_profile_reactor_tour_check)
+        is_checked = self._web_driver.find_element(
+            admin_add_user_profile_locator.add_profile_multiple_login_check).is_selected()
+        if not is_checked and is_multiple_login:
+            self._web_driver.click_element(admin_add_user_profile_locator.add_profile_multiple_login_check)
+        self._web_driver.click_element(admin_add_user_profile_locator.add_profile_save_button)
