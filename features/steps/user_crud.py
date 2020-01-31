@@ -1,4 +1,4 @@
-from behave import given, when, then
+from behave import given, when, then, step
 from page_object.global_objects import *
 
 
@@ -29,20 +29,13 @@ def login_with_new_user(context, username, password):
     blueprint_login_page.open(context.config.userdata.get('blueprint_url'))
     blueprint_login_page.verify_login_page()
     blueprint_login_page.login(username, password)
-    time.sleep(2)
-    blueprint_login_page.reload_page()
-    time.sleep(2)
     blueprint_dashboard_page.skip_tour(True)
     blueprint_login_page.verify_login_pass()
     blueprint_dashboard_page.logout()
 
 
-@then("admin user with {admin_user} and {admin_password} can delete {username} user")
+@step("admin user with {admin_user} and {admin_password} can delete {username} user")
 def login_with_new_user(context, admin_user, admin_password, username):
-    admin_login_page.open(context.config.userdata.get('blueprint_url') + '/admin')
-    admin_login_page.verify_login_page()
-    admin_login_page.login(admin_user, admin_password)
-    admin_dashboard_page.verify_login_pass()
     admin_dashboard_page.goto_users_list()
     admin_user_list_page.search_and_land_to_change_user(username)
     admin_add_user_page.verify_change_user_page()
@@ -66,7 +59,7 @@ def create_user_profile(context, username):
     admin_user_profile_page.goto_add_user_profile_page()
     admin_add_user_profile_page.verify_add_user_profile_page()
     admin_add_user_profile_page.add_user_profile("AutomationCompany", username,
-                                                 "C:\\Users\\shail\\Documents\\BlueStackTestFiles\\TestFiles\\img.png",
+                                                 "",
                                                  False, False, False, False)
     admin_user_profile_page.verify_user_profile_page()
     admin_dashboard_page.logout()

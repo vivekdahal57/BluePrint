@@ -171,7 +171,8 @@ class AdminAddUserProfilePage(BasePage):
     def add_user_profile(self, company, username, profile_picture, has_agreed_tos, has_toured_blueprint,
                          has_toured_reactor, is_multiple_login):
         self._web_driver.send_value(admin_add_user_profile_locator.add_profile_company_field, company)
-        self._web_driver.send_value(admin_add_user_profile_locator.add_profile_image_browse, profile_picture)
+        if profile_picture != "":
+            self._web_driver.send_value(admin_add_user_profile_locator.add_profile_image_browse, profile_picture)
         self._web_driver.select_value_from_options(admin_add_user_profile_locator.add_profile_users_dropdown, username)
         is_checked = self._web_driver.find_element(
             admin_add_user_profile_locator.add_profile_agreed_tos_check).is_selected()

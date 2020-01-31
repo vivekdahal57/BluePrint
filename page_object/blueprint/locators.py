@@ -15,10 +15,10 @@ class BlueprintLoginPageLocator:
 
 
 class BlueprintDashboardPageLocator:
-    dashboard_title_text = (By.XPATH, '//h2[contains(text(),\'All Collections\')]')
+    dashboard_title_text = (By.XPATH, "//h2[contains(text(),'All Collections')]")
     dashboard_blueprint_select_half_button = (By.XPATH,
                                               "//div[@class='app-selector__action app-selector__action--blueprint']//button[@class='button button--primary button--min-width app-selector__cta']")
-    profile_drop_down = (By.XPATH, '//span[@class=\'profile-image-letter\']')
+    profile_drop_down = (By.XPATH, "//div[@class='profile']/div[1]")
     logout_link = (By.XPATH, "//span[contains(text(),'Logout')]")
     loading_text = (By.XPATH, "//p[contains(text(),'Loading...')]")
     tos_skip_tour_link = (By.XPATH, "//span[contains(text(),'Skip Tour')]")

@@ -25,10 +25,8 @@ class BlueprintLoginPage(BasePage):
 
     def verify_login_pass(self):
         time.sleep(2)
-        is_visible = self._web_driver.does_element_exist(
-            blueprint_dashboard_locator.dashboard_blueprint_select_half_button)
-        if is_visible:
-            self._web_driver.click_element(blueprint_dashboard_locator.dashboard_blueprint_select_half_button)
+        self._web_driver.reload_page()
+        time.sleep(2)
         self._web_driver.verify_text(blueprint_dashboard_locator.dashboard_title_text, 'All Collections')
 
 

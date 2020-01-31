@@ -55,9 +55,9 @@ class BasePage(object):
         _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
         return _web_driver_wait.until(EC.visibility_of_element_located((By.NAME, name)))
 
-    def find_element(self, element):
+    def find_element(self, element, timeout=__TIMEOUT):
         # This method wait for the element and return the element
-        _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
+        _web_driver_wait = WebDriverWait(self._web_driver.driver, timeout)
         return _web_driver_wait.until(EC.visibility_of_element_located(element))
 
     def get_text(self, element):
@@ -119,7 +119,7 @@ class BasePage(object):
 
     def does_element_exist(self, element):
         try:
-            self.find_element(element)
+            self.find_element(element, 2)
         except NoSuchElementException:
             return False
         except TimeoutException:
