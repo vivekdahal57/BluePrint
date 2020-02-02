@@ -10,7 +10,10 @@ directory = os.path.dirname(os.path.dirname(__file__))
 
 # yield is used to quit the browser when default timeout period is ended and test is still not passing
 def browser_chrome(context):
-    browser = webdriver.Chrome(os.path.join(directory + '/', 'resource/chromedriver.exe'))
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
+    browser = webdriver.Chrome(os.path.join(directory + '/', 'resource/chromedriver.exe'), chrome_options=options)
     val = dict({'authorization': 'Basic bm9ibGVfdGVhbTppdCB3YXMgdGhlIGJsdXJzdCBvZiB0aW1lcw=='})
     browser.header_overrides = val
     context.web = BasePage(browser)

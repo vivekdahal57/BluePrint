@@ -25,6 +25,18 @@ class BlueprintDashboardPageLocator:
     tos_i_agree = (By.XPATH, "//div[@class='form-checkbox__view']")
     tos_agree_continue = (By.XPATH, "//span[contains(text(),'Agree and Continue')]")
     tos_get_started = (By.XPATH, "//span[contains(text(),'Get Started')]")
+    dashboard_left_menu_drop_down = (By.XPATH, "//div[@class='left-side']")
+    dashboard_left_new_col_button = (By.XPATH, "//span[contains(text(),'+ New Collection')]")
+    dashboard_browse_file_button = (By.XPATH, "//button[@class='upload-content']")
+
+    def __init__(self):
+        pass
+
+
+class BlueprintCollectionDetailLocator:
+    dashboard_collection_name_popup = (By.XPATH, "//input[@class='textInput']")
+    dashboard_collection_ok_button = (By.XPATH, "//div[@class='modal-form__actions']//button[@class='button button--primary button--min-width']")
+    dashboard_collection_name_text = (By.ID, "collection-header-name")
 
     def __init__(self):
         pass

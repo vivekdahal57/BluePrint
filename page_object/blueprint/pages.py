@@ -1,8 +1,12 @@
+from selenium.webdriver.common.by import By
+
 from page_object.global_objects import *
-from page_object.blueprint.locators import BlueprintLoginPageLocator, BlueprintDashboardPageLocator
+from page_object.blueprint.locators import BlueprintLoginPageLocator, BlueprintDashboardPageLocator, \
+    BlueprintCollectionDetailLocator
 
 blueprint_login_locator = BlueprintLoginPageLocator()
 blueprint_dashboard_locator = BlueprintDashboardPageLocator()
+blueprint_collection_details_locator = BlueprintCollectionDetailLocator()
 
 
 class BlueprintLoginPage(BasePage):
@@ -44,6 +48,7 @@ class BlueprintDashboardPage(BasePage):
             self.accept_tos_and_continue(is_accept)
 
     def accept_tos_and_continue(self, is_accept):
+        time.sleep(1)
         is_checked = self._web_driver.find_element(blueprint_dashboard_locator.tos_i_agree).is_selected()
         if not is_checked and is_accept:
             self._web_driver.click_element(blueprint_dashboard_locator.tos_i_agree)
@@ -55,3 +60,29 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.scroll_to(blueprint_dashboard_locator.profile_drop_down)
         self._web_driver.click_element(blueprint_dashboard_locator.logout_link)
         self.blueprint_login_page.verify_login_page()
+
+    def add_new_collection(self, file_path, collection_name):
+        self._web_driver.click_element(blueprint_dashboard_locator.dashboard_left_menu_drop_down)
+        self._web_driver.click_element(blueprint_dashboard_locator.dashboard_left_new_col_button)
+        self.verify_upload_popup()
+        self._web_driver.upload_file(file_path)
+        self._web_driver.send_value(blueprint_collection_details_locator.dashboard_collection_name_popup, collection_name)
+        self._web_driver.click_element(blueprint_collection_details_locator.dashboard_collection_ok_button)
+        time.sleep(2)
+        self._web_driver.reload_page()
+        time.sleep(3)
+
+    def verify_upload_popup(self):
+        self._web_driver.verify_text(blueprint_dashboard_locator.dashboard_browse_file_button, "Browse")
+
+
+class BlueprintCollectionDetailsPage(BasePage):
+    _web_driver_wait = None
+
+    def __init__(self, obj):
+        self._web_driver = obj
+        self.blueprint_login_page = BlueprintLoginPage(obj)
+
+    def verify_collection_details_page(self, col_name):
+        self._web_driver.scroll_to(blueprint_collection_details_locator.dashboard_collection_name_text)
+        self._web_driver.verify_text(blueprint_collection_details_locator.dashboard_collection_name_text, col_name)

@@ -1,5 +1,3 @@
-from selenium.webdriver.support.select import Select
-
 from page_object.global_objects import *
 from page_object.admin.locators import AdminLoginPageLocator, AdminDashboardPageLocator, AdminUserListPageLocator, \
     AdminAddUserPageLocator, AdminUserProfileLocator, AdminAddUserProfileLocator
@@ -55,6 +53,10 @@ class AdminDashboardPage(BasePage):
     def goto_users_profile_list(self):
         self._web_driver.scroll_to(admin_dashboard_locator.user_profile_link)
         self._web_driver.click_element(admin_dashboard_locator.user_profile_link)
+
+    def goto_collection_list(self):
+        self._web_driver.scroll_to(admin_dashboard_locator.collection_link)
+        self._web_driver.click_element(admin_dashboard_locator.collection_link)
 
 
 class AdminUsersListPage(BasePage):

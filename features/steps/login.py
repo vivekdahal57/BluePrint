@@ -1,6 +1,6 @@
-from behave import given, when, then
+from behave import given, when, then, step
 from page_object.global_objects import blueprint_login_page, blueprint_dashboard_page, admin_login_page, \
-    admin_dashboard_page
+    admin_dashboard_page, blueprint_collection_details_page
 
 
 @given('user is in blueprint Login page')
@@ -53,3 +53,10 @@ def pass_login(context):
 @then('admin user succeed to logout')
 def pass_login(context):
     admin_dashboard_page.logout()
+
+
+@step('logged in user can create collection with name {collection_name} and with file {file_name}')
+def create_collection(context, collection_name, file_name):
+    blueprint_dashboard_page.add_new_collection(context.config.userdata.get('upload_file_location') + file_name,
+                                                collection_name)
+    blueprint_collection_details_page.verify_collection_details_page(collection_name)

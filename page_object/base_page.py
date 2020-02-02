@@ -71,7 +71,7 @@ class BasePage(object):
 
     def verify_text(self, element, text):
         # This method get text from the element and verify it
-        assert self.get_text(element) in text, \
+        assert text in self.get_text(element), \
             'Element {} not found'.format(element)
 
     def click_element(self, element):
@@ -96,6 +96,11 @@ class BasePage(object):
         if value != Keys.ENTER and value != Keys.RETURN:
             elm.clear()
         elm.send_keys(value)
+
+    def upload_file(self, file_name):
+        self._web_driver.driver.execute_script(
+            "document.querySelector(arguments[0]).setAttribute('style','display:inline');", "input[type='file']")
+        self._web_driver.driver.find_element_by_xpath("//input[@type='file']").send_keys(file_name)
 
     def zoom_browser(self, value):
         # This methods sets the zoom ratio with the provided value

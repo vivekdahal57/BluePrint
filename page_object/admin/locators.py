@@ -18,6 +18,7 @@ class AdminDashboardPageLocator:
     logout_page_title = (By.XPATH, "// h1[contains(text(), 'Logged out')]")
     user_profile_link = (By.XPATH, "//a[contains(text(),'User profiles')]")
     user_link = (By.XPATH, "//a[contains(text(),'Users')]")
+    collection_link = (By.XPATH, "//a[contains(text(),'Collections')]")
 
     def __init__(self):
         pass

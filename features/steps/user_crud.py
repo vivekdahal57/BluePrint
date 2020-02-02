@@ -34,8 +34,8 @@ def login_with_new_user(context, username, password):
     blueprint_dashboard_page.logout()
 
 
-@step("admin user with {admin_user} and {admin_password} can delete {username} user")
-def login_with_new_user(context, admin_user, admin_password, username):
+@step("admin user can delete {username} user")
+def login_with_new_user(context, username):
     admin_dashboard_page.goto_users_list()
     admin_user_list_page.search_and_land_to_change_user(username)
     admin_add_user_page.verify_change_user_page()
