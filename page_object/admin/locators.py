@@ -19,6 +19,7 @@ class AdminDashboardPageLocator:
     user_profile_link = (By.XPATH, "//a[contains(text(),'User profiles')]")
     user_link = (By.XPATH, "//a[contains(text(),'Users')]")
     collection_link = (By.XPATH, "//a[contains(text(),'Collections')]")
+    cluster_link = (By.XPATH, "//a[contains(text(),'Cluster')]")
 
     def __init__(self):
         pass

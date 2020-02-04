@@ -122,6 +122,12 @@ class BasePage(object):
         select = Select(self.find_element(element))
         select.select_by_visible_text(value)
 
+    def select_value_by_partial_text_options(self, element_id, value):
+        # “In the basket are %s and %s” % (x,y)
+        xpath = "//select[@id='%s']/option[contains(text(), '%s')]" % (str(element_id), str(value))
+        elem = self.find_element((By.XPATH, xpath))
+        elem.click()
+
     def does_element_exist(self, element):
         try:
             self.find_element(element, 2)

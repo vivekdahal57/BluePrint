@@ -3,7 +3,8 @@ import time
 from page_object.base_page import BasePage
 from page_object.admin.pages import AdminLoginPage, AdminDashboardPage, AdminUsersListPage, AdminAddUserPage, \
     AdminAddUserProfilePage, AdminUserProfileListPage
-from page_object.admin.pages2 import AdminCollectionsListPage,AdminAddCollectionPage
+from page_object.admin.pages2 import AdminCollectionsListPage, AdminAddCollectionPage, AdminClusterListPage, \
+    AdminAddClusterPage
 from page_object.blueprint.pages import BlueprintLoginPage, BlueprintDashboardPage, BlueprintCollectionDetailsPage
 
 # all global objects for pages
@@ -20,3 +21,5 @@ admin_add_user_profile_page = AdminAddUserProfilePage(base_page)
 admin_collection_list_page = AdminCollectionsListPage(base_page)
 admin_add_collection_page = AdminAddCollectionPage(base_page)
 
+admin_cluster_list_page = AdminClusterListPage(base_page)
+admin_add_cluster_page = AdminAddClusterPage(base_page)

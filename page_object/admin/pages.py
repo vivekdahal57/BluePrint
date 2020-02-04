@@ -28,6 +28,10 @@ class AdminLoginPage(BasePage):
         self._web_driver.verify_text(admin_login_locator.incorrect_login_message,
                                      'Please enter the correct username and password for a staff account. Note that both fields may be case-sensitive.')
 
+    def verify_authorization_fail(self, username):
+        self._web_driver.verify_text(admin_login_locator.incorrect_login_message,
+                                     'You are authenticated as '+username+', but are not authorized to access this page. Would you like to login to a different account?')
+
 
 class AdminDashboardPage(BasePage):
     _web_driver_wait = None
@@ -57,6 +61,10 @@ class AdminDashboardPage(BasePage):
     def goto_collection_list(self):
         self._web_driver.scroll_to(admin_dashboard_locator.collection_link)
         self._web_driver.click_element(admin_dashboard_locator.collection_link)
+
+    def goto_cluster_list(self):
+        self._web_driver.scroll_to(admin_dashboard_locator.cluster_link)
+        self._web_driver.click_element(admin_dashboard_locator.cluster_link)
 
 
 class AdminUsersListPage(BasePage):

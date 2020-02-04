@@ -29,7 +29,7 @@ def pass_login(context):
     blueprint_dashboard_page.logout()
 
 
-@given('user is in admin Login page')
+@step('user is in admin Login page')
 def open_browser(context):
     admin_login_page.open(context.config.userdata.get('blueprint_url') + '/admin')
     admin_login_page.verify_login_page()
@@ -43,6 +43,11 @@ def login_attempt(context, username, password):
 @then('admin user failed to login')
 def failed_login(context):
     admin_login_page.verify_login_fail()
+
+
+@then('normal user {username} failed to authorized')
+def failed_login(context, username):
+    admin_login_page.verify_authorization_fail(username)
 
 
 @then('admin user succeed to login')
