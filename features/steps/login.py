@@ -21,7 +21,7 @@ def failed_login(context):
 
 @then('user succeed to login')
 def pass_login(context):
-    blueprint_login_page.verify_login_pass()
+    blueprint_dashboard_page.verify_login_pass()
 
 
 @then('user succeed to logout')

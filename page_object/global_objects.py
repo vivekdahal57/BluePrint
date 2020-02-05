@@ -1,17 +1,24 @@
-import time
-
 from page_object.base_page import BasePage
-from page_object.admin.pages import AdminLoginPage, AdminDashboardPage, AdminUsersListPage, AdminAddUserPage, \
-    AdminAddUserProfilePage, AdminUserProfileListPage
-from page_object.admin.pages2 import AdminCollectionsListPage, AdminAddCollectionPage, AdminClusterListPage, \
-    AdminAddClusterPage
-from page_object.blueprint.pages import BlueprintLoginPage, BlueprintDashboardPage, BlueprintCollectionDetailsPage
+from page_object.admin.AdminAddUserProfilePage import AdminAddUserProfilePage
+from page_object.admin.AdminUserProfileListPage import AdminUserProfileListPage
+from page_object.admin.AdminAddUserPage import AdminAddUserPage
+from page_object.admin.AdminUsersListPage import AdminUsersListPage
+from page_object.admin.AdminDashboardPage import AdminDashboardPage
+from page_object.admin.AdminLoginPage import AdminLoginPage
+from page_object.admin.AdminCollectionsListPage import AdminCollectionsListPage
+from page_object.admin.AdminAddCollectionPage import AdminAddCollectionPage
+from page_object.admin.AdminClustersListPage import AdminClustersListPage
+from page_object.admin.AdminAddClusterPage import AdminAddClusterPage
+from page_object.blueprint.BlueprintLoginPage import BlueprintLoginPage
+from page_object.blueprint.BlueprintDashboardPage import BlueprintDashboardPage
+from page_object.blueprint.BlueprintCollectionDetailPage import BlueprintCollectionDetailPage
 
 # all global objects for pages
 base_page = BasePage(None)
 blueprint_login_page = BlueprintLoginPage(base_page)
 blueprint_dashboard_page = BlueprintDashboardPage(base_page)
-blueprint_collection_details_page = BlueprintCollectionDetailsPage(base_page)
+blueprint_collection_details_page = BlueprintCollectionDetailPage(base_page)
+
 admin_login_page = AdminLoginPage(base_page)
 admin_dashboard_page = AdminDashboardPage(base_page)
 admin_user_list_page = AdminUsersListPage(base_page)
@@ -20,6 +27,5 @@ admin_user_profile_page = AdminUserProfileListPage(base_page)
 admin_add_user_profile_page = AdminAddUserProfilePage(base_page)
 admin_collection_list_page = AdminCollectionsListPage(base_page)
 admin_add_collection_page = AdminAddCollectionPage(base_page)
-
-admin_cluster_list_page = AdminClusterListPage(base_page)
+admin_cluster_list_page = AdminClustersListPage(base_page)
 admin_add_cluster_page = AdminAddClusterPage(base_page)

@@ -1,3 +1,5 @@
+import time
+
 from behave import given, when, then, step
 from page_object.global_objects import *
 
@@ -30,7 +32,7 @@ def login_with_new_user(context, username, password):
     blueprint_login_page.verify_login_page()
     blueprint_login_page.login(username, password)
     blueprint_dashboard_page.skip_tour(True)
-    blueprint_login_page.verify_login_pass()
+    blueprint_dashboard_page.verify_login_pass()
     blueprint_dashboard_page.logout()
 
 
