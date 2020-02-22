@@ -27,7 +27,7 @@ class AdminUserProfileListPage(BasePage):
                                      "The user profile " + username + " was changed successfully.")
 
     def search_and_land_to_change_user_profile(self, username):
-        self._web_driver.send_value(admin_users_list_locator.user_search_field, username)
-        self._web_driver.click_element(admin_users_list_locator.user_search_button)
-        self._web_driver.verify_text(admin_users_list_locator.user_search_output, username)
-        self._web_driver.click_element(admin_users_list_locator.user_search_output)
+        self._web_driver.send_value(self.user_search_field, username)
+        self._web_driver.click_element(self.user_search_button)
+        self._web_driver.verify_text(self.user_search_output, username)
+        self._web_driver.click_element(self.user_search_output)

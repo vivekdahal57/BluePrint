@@ -13,6 +13,7 @@ def browser_chrome(context):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
+    options.add_experimental_option("excludeSwitches", ['enable-automation']);
     browser = webdriver.Chrome(os.path.join(directory + '/', 'resource/chromedriver.exe'), chrome_options=options)
     val = dict({'authorization': 'Basic bm9ibGVfdGVhbTppdCB3YXMgdGhlIGJsdXJzdCBvZiB0aW1lcw=='})
     browser.header_overrides = val

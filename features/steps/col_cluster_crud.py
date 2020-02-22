@@ -48,9 +48,16 @@ def change_cluster(context, cluster_name, collection_name, status):
 
 @step("admin user can delete a cluster with name {cluster_name}")
 def delete_cluster(context, cluster_name):
+    admin_dashboard_page.goto_cluster_list()
     admin_cluster_list_page.verify_cluster_list_page()
     admin_cluster_list_page.search_and_land_to_change_cluster(cluster_name)
     admin_add_cluster_page.verify_change_cluster_page()
     admin_add_cluster_page.delete_cluster()
     admin_cluster_list_page.verify_cluster_list_page()
     admin_dashboard_page.logout()
+
+
+@step("logged in user can search with filename {filename} and land on it")
+def search_text(context, filename):
+    blueprint_dashboard_page.search_and_land(filename)
+    blueprint_ingested_document_page.verify_ingested_document_page()

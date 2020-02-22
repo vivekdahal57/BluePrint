@@ -1,6 +1,8 @@
+import time
+
 from behave import given, when, then, step
 from page_object.global_objects import blueprint_login_page, blueprint_dashboard_page, admin_login_page, \
-    admin_dashboard_page, blueprint_collection_details_page
+    admin_dashboard_page, blueprint_collection_details_page, architect_dashboard_page
 
 
 @given('user is in blueprint Login page')
@@ -65,3 +67,12 @@ def create_collection(context, collection_name, file_name):
     blueprint_dashboard_page.add_new_collection(context.config.userdata.get('upload_file_location') + file_name,
                                                 collection_name)
     blueprint_collection_details_page.verify_collection_details_page(collection_name)
+
+
+@step('user navigate to Architect application')
+def user_navigate_to_architect(context):
+    blueprint_dashboard_page.navigate_to_architect()
+    architect_dashboard_page.verify_architect_dashboard()
+    # Too do : selecting the collection and adding further steps
+    # architect_dashboard_page.select_collection('test')
+    architect_dashboard_page.logout()

@@ -60,19 +60,18 @@ class BasePage(object):
         _web_driver_wait = WebDriverWait(self._web_driver.driver, timeout)
         return _web_driver_wait.until(EC.visibility_of_element_located(element))
 
-    def get_text(self, element):
+    def get_text(self, element, timeout=__TIMEOUT):
         # This method get text from the element and return the text
-        elm = self.find_element(element)
+        elm = self.find_element(element, timeout)
         return elm.text
 
     def wait_until_element_disappear(self, element):
         _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
         return _web_driver_wait.until(EC.invisibility_of_element_located(element))
 
-    def verify_text(self, element, text):
+    def verify_text(self, element, text, timeout=__TIMEOUT):
         # This method get text from the element and verify it
-        assert text in self.get_text(element), \
-            'Element {} not found'.format(element)
+        assert text in self.get_text(element, timeout), 'Element {} not found'.format(element)
 
     def click_element(self, element):
         # This method clicks on the element provided by the user.
@@ -104,7 +103,7 @@ class BasePage(object):
 
     def zoom_browser(self, value):
         # This methods sets the zoom ratio with the provided value
-        self._web_driver.driver.execute_script('document.body.style.zoom=\'' + value + '\'')
+        self._web_driver.driver.execute_script('document.body.style.zoom=\'' + str(value/100) + '\'')
 
     def drag_from_drop_to(self, source_element, destination_element):
         # This method drag element from source to destination

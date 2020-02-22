@@ -19,7 +19,7 @@ def create_user(context, username, password):
     admin_user_list_page.goto_add_user_page()
     admin_add_user_page.verify_add_user_page()
     admin_add_user_page.create_user(username, password)
-    admin_add_user_page.change_user("Automation", "User1", "test@test.com", True, False, False, ['Test Group'], "")
+    admin_add_user_page.change_user("Automation", "User1", "test@test.com", True, False, False, ['System Administrators'], "")
     admin_user_list_page.verify_users_list_page()
     time.sleep(2)
     # admin_user_list_page.verify_user_change_success(username)
