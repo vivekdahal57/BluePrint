@@ -10,6 +10,7 @@ from page_object.admin.AdminCollectionsListPage import AdminCollectionsListPage
 from page_object.admin.AdminAddCollectionPage import AdminAddCollectionPage
 from page_object.admin.AdminClustersListPage import AdminClustersListPage
 from page_object.admin.AdminAddClusterPage import AdminAddClusterPage
+from page_object.blueprint.BlueprintClusterDetailPage import BlueprintClusterDetailPage
 from page_object.blueprint.BlueprintIngestedDetailPage import BlueprintIngestedDetailPage
 from page_object.blueprint.BlueprintLoginPage import BlueprintLoginPage
 from page_object.blueprint.BlueprintDashboardPage import BlueprintDashboardPage
@@ -21,7 +22,7 @@ blueprint_login_page = BlueprintLoginPage(base_page)
 blueprint_dashboard_page = BlueprintDashboardPage(base_page)
 blueprint_ingested_document_page = BlueprintIngestedDetailPage(base_page)
 blueprint_collection_details_page = BlueprintCollectionDetailPage(base_page)
-
+blueprint_cluster_details_page = BlueprintClusterDetailPage(base_page)
 architect_dashboard_page = ArchitectDashboardPage(base_page)
 
 admin_login_page = AdminLoginPage(base_page)

@@ -1,6 +1,10 @@
 import time
+from telnetlib import EC
 
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
 
 from page_object.admin.AdminLoginPage import AdminLoginPage
 from page_object.base_page import BasePage
@@ -13,7 +17,8 @@ class ArchitectDashboardPage(BasePage):
     logout_link = (By.XPATH, "//span[contains(text(),'Log Out')]")
     expand_link = (By.XPATH, "//span[contains(text(),'Expand')]")
     collections_drop_down = (By.NAME, "collections")
-    transfer_batch_cluster_list_path = "//main[@id='page-wrap']//li"
+    transfer_batch_all_list_path = "//main[@id='page-wrap']//li"
+
     _web_driver_wait = None
 
     def __init__(self, obj):
@@ -22,26 +27,29 @@ class ArchitectDashboardPage(BasePage):
 
     def verify_architect_dashboard(self):
         self._web_driver.verify_text(self.dashboard_title_text, 'Organize')
+        self._web_driver.driver.get("https://staging.internal.noble.ai/architect/organize")
 
     def select_collection(self, collection_name):
-        self._web_driver.find_element(self.expand_link, 120)
-        self._web_driver.click_element(self.collections_drop_down)
-        time.sleep(3)
-        # self._web_driver.scroll_to((By.XPATH, "//option[contains(text(),'Patents test sdC')]"))
-        element = self._web_driver.find_element(By.XPATH,
-                                                "//option[contains(text(),'Patents test sdC')]")
-        self._web_driver.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-        self._web_driver.click_element((By.XPATH, "//option[contains(text(),'Patents test sdC')]"))
+        collection_menu = (By.XPATH, "//option[contains(text(),'" + collection_name + "')]")
         time.sleep(5)
-        # self._web_driver.select_value_from_options(self.collections_drop_down, collection_name)
+        action = ActionChains(self._web_driver.driver)
+        action.key_down(Keys.CONTROL).send_keys(Keys.F5).key_up(Keys.CONTROL).perform()
+        time.sleep(5)
+        self._web_driver.find_element(self.expand_link, 120)
+        element = self._web_driver.find_element(collection_menu)
+        self._web_driver.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        self._web_driver.click_element(collection_menu)
 
-    def get_transfer_batch_count(self):
-        elms = self._web_driver.find_elements((By.XPATH, self.transfer_batch_cluster_list_path))
-        count = 0
-        for elm in elms:
-            if elm.get_text() in "TransferBatch:":
-                count = count + 1
-        return count
+    def drag_transfer_batch_to_cluster(self, cluster_name):
+        draggable = (By.CSS_SELECTOR, ".rc-tree-node-selected.draggable")
+        draggable_before = (By.XPATH, "//span[contains(text(),'TransferBatch:')]")
+        cluster_elm = (By.XPATH, "//span[@title='Cluster: " + cluster_name + "']")
+        # self._web_driver.change_height(self._web_driver.find_element(cluster_elm), 100)
+        self._web_driver.scroll_to(draggable_before)
+        self._web_driver.click_element(draggable_before)
+        time.sleep(2)
+        self._web_driver.drag_from_drop_to_js(draggable, cluster_elm)
+        self._web_driver.wait_until_element_disappear(draggable_before)
 
     def logout(self):
         self._web_driver.scroll_to(self.left_menu_drop_down)

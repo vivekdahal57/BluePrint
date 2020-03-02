@@ -1,5 +1,7 @@
+import time
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver import ActionChains
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
@@ -40,10 +42,10 @@ class BasePage(object):
         _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
         return _web_driver_wait.until(EC.visibility_of_element_located((By.XPATH, xpath)))
 
-    def find_elements_by_xpath(self, xpath):
+    def element_list_by_xpath(self, xpath):
         # This method find all the elements using xpath and return the elements
         _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
-        return _web_driver_wait.until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+        return _web_driver_wait.until(EC.visibility_of_all_elements_located((By.XPATH, xpath)))
 
     def find_element_by_id(self, identity):
         # This method finds the element using id and return the element
@@ -59,6 +61,11 @@ class BasePage(object):
         # This method wait for the element and return the element
         _web_driver_wait = WebDriverWait(self._web_driver.driver, timeout)
         return _web_driver_wait.until(EC.visibility_of_element_located(element))
+
+    def find_elements(self, element, timeout=__TIMEOUT):
+        # This method wait for the element and return the element
+        _web_driver_wait = WebDriverWait(self._web_driver.driver, timeout)
+        return _web_driver_wait.until(EC.visibility_of_all_elements_located(element))
 
     def get_text(self, element, timeout=__TIMEOUT):
         # This method get text from the element and return the text
@@ -103,13 +110,39 @@ class BasePage(object):
 
     def zoom_browser(self, value):
         # This methods sets the zoom ratio with the provided value
-        self._web_driver.driver.execute_script('document.body.style.zoom=\'' + str(value/100) + '\'')
+        self._web_driver.driver.execute_script('document.body.style.zoom=\'' + str(value / 100) + '\'')
+
+    def change_height(self, element, l_value=0):
+        if l_value > 0:
+            self._web_driver.driver.execute_script("arguments[0].setAttribute('style','height:" + str(l_value) + "px')",
+                                                   element)
 
     def drag_from_drop_to(self, source_element, destination_element):
         # This method drag element from source to destination
         # (sometimes it might not work so scroll down to element first and then drag drop)
         ActionChains(self._web_driver.driver).drag_and_drop(self.find_element(source_element),
                                                             self.find_element(destination_element)).perform()
+
+    def drag_from_drop_to_js(self, source_element, destination_element):
+        # ActionChains(self._web_driver.driver).click_and_hold(self.find_element(source_element)).move_to_element(self.find_element(destination_element)).release(self.find_element(destination_element)).perform()
+        self._web_driver.driver.execute_script(
+            "function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+            + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+            + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+            + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+            + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+            + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+            + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+            + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+            + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+            + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+            + "var dropEvent = createEvent('drop');\n"
+            + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+            + "var dragEndEvent = createEvent('dragend');\n"
+            + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+            + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+            + "simulateHTML5DragAndDrop(source,destination);", self.find_element(source_element),
+            self.find_element(destination_element))
 
     def scroll_to(self, element):
         ActionChains(self._web_driver.driver).move_to_element(self.find_element(element)).perform()

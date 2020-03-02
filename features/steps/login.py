@@ -73,6 +73,10 @@ def create_collection(context, collection_name, file_name):
 def user_navigate_to_architect(context):
     blueprint_dashboard_page.navigate_to_architect()
     architect_dashboard_page.verify_architect_dashboard()
-    # Too do : selecting the collection and adding further steps
-    # architect_dashboard_page.select_collection('test')
+
+
+@step('user can drag transfer-batch to {cluster_name} after selecting {collection_name}')
+def drag_n_drop_to_cluster(context, collection_name, cluster_name):
+    architect_dashboard_page.select_collection('automation_collection1')
+    architect_dashboard_page.drag_transfer_batch_to_cluster(cluster_name)
     architect_dashboard_page.logout()

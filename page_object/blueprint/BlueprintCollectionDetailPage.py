@@ -9,6 +9,7 @@ class BlueprintCollectionDetailPage(BasePage):
     dashboard_collection_ok_button = (
         By.XPATH, "//div[@class='modal-form__actions']//button[@class='button button--primary button--min-width']")
     dashboard_collection_name_text = (By.ID, "collection-header-name")
+    dashboard_cluster_name_text = (By.XPATH, "//div[@class='cluster-name']//h3")
     _web_driver_wait = None
 
     def __init__(self, obj):
@@ -18,3 +19,6 @@ class BlueprintCollectionDetailPage(BasePage):
     def verify_collection_details_page(self, col_name):
         self._web_driver.scroll_to(self.dashboard_collection_name_text)
         self._web_driver.verify_text(self.dashboard_collection_name_text, col_name)
+
+    def verify_cluster_name(self, cluster_name):
+        self._web_driver.verify_text(self.dashboard_cluster_name_text, cluster_name)

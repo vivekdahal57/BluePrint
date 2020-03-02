@@ -61,3 +61,15 @@ def delete_cluster(context, cluster_name):
 def search_text(context, filename):
     blueprint_dashboard_page.search_and_land(filename)
     blueprint_ingested_document_page.verify_ingested_document_page()
+
+
+@step("logged in user can search with collection name {collection_name} and lands on collection details page")
+def search_collection(context, collection_name):
+    blueprint_dashboard_page.verify_collection_and_land_on_detail(collection_name)
+    blueprint_collection_details_page.verify_collection_details_page(collection_name)
+
+
+@step("user lands on cluster detail page by searching {cluster_name} cluster name")
+def search_custer(context, cluster_name):
+    blueprint_collection_details_page.click_element(blueprint_collection_details_page.dashboard_cluster_name_text)
+    blueprint_cluster_details_page.verify_cluster_details_page(cluster_name)

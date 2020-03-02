@@ -25,11 +25,11 @@ class BlueprintDashboardPage(BasePage):
     dashboard_collection_name_popup = (By.XPATH, "//input[@class='textInput']")
     dashboard_collection_ok_button = (
         By.XPATH, "//div[@class='modal-form__actions']//button[@class='button button--primary button--min-width']")
-    dashboard_collection_name_text = (By.ID, "collection-header-name")
     dashboard_search_icon = (
         By.XPATH, "//button[@class='button button--primary button--transparent button--icon-only']")
     dashboard_search_field = (By.XPATH, "//input[@placeholder='Search Here']")
     dashboard_search_result = (By.XPATH, "//mark[contains(@class,'foundWord')]")
+    dashboard_collection_name_path = "//main[@id='page-wrap']//div//div"
 
     _web_driver_wait = None
 
@@ -37,6 +37,17 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver = obj
         self.blueprint_login_page = BlueprintLoginPage(obj)
         self.architect_dashboard_page = ArchitectDashboardPage(obj)
+
+    def get_collection_path_by_name(self, collection_name):
+        collection_path = self.dashboard_collection_name_path + "//h3//div[contains(text(),'" + collection_name + "')]"
+        elm = (By.XPATH, collection_path)
+        return elm
+
+    def get_view_collection_button_path_by_name(self, collection_name):
+        view_collection_path = self.dashboard_collection_name_path + "//h3//div[contains(text(),'" + collection_name + "')]//..//..//..//div[3]//a[1]//span[1]"
+        print(view_collection_path)
+        elm = (By.XPATH, view_collection_path)
+        return elm
 
     def verify_login_pass(self):
         is_present = self._web_driver.does_element_exist(self.dashboard_blueprint_select_half_button)
@@ -94,3 +105,8 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.send_value(self.dashboard_search_field, search_text)
         self._web_driver.verify_text(self.dashboard_search_result, search_text)
         self._web_driver.click_element(self.dashboard_search_result)
+
+    def verify_collection_and_land_on_detail(self, collection_name):
+        self._web_driver.verify_text(self.get_collection_path_by_name(collection_name), collection_name)
+        self._web_driver.verify_text(self.get_view_collection_button_path_by_name(collection_name), "View Collection")
+        self._web_driver.click_element(self.get_view_collection_button_path_by_name(collection_name))
