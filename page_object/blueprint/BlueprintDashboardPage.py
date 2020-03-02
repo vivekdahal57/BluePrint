@@ -79,15 +79,16 @@ class BlueprintDashboardPage(BasePage):
         self.blueprint_login_page.verify_login_page()
 
     def add_new_collection(self, file_path, collection_name):
+        time.sleep(1)
         self._web_driver.click_element(self.dashboard_left_menu_drop_down)
         self._web_driver.click_element(self.dashboard_left_new_col_button)
         self.verify_upload_popup()
         self._web_driver.upload_file(file_path)
         self._web_driver.send_value(self.dashboard_collection_name_popup, collection_name)
         self._web_driver.click_element(self.dashboard_collection_ok_button)
-        time.sleep(2)
+        time.sleep(1)
         self._web_driver.reload_page()
-        time.sleep(3)
+        time.sleep(1)
 
     def verify_upload_popup(self):
         self._web_driver.verify_text(self.dashboard_browse_file_button, "Browse")

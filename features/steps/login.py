@@ -77,6 +77,10 @@ def user_navigate_to_architect(context):
 
 @step('user can drag transfer-batch to {cluster_name} after selecting {collection_name}')
 def drag_n_drop_to_cluster(context, collection_name, cluster_name):
-    architect_dashboard_page.select_collection('automation_collection1')
+    architect_dashboard_page.select_collection(collection_name)
     architect_dashboard_page.drag_transfer_batch_to_cluster(cluster_name)
+
+
+@step('user succeed to logout from architect application')
+def pass_login(context):
     architect_dashboard_page.logout()

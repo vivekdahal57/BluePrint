@@ -1,5 +1,3 @@
-import time
-
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -36,6 +34,9 @@ class BasePage(object):
         self._web_driver.driver.set_page_load_timeout(30)
         self._web_driver.driver.maximize_window()
         self._web_driver.driver.get(url)
+
+    def action(self):
+        return ActionChains(self._web_driver.driver)
 
     def find_element_by_xpath(self, xpath):
         # This method finds the element using xpath and return the element
@@ -120,8 +121,8 @@ class BasePage(object):
     def drag_from_drop_to(self, source_element, destination_element):
         # This method drag element from source to destination
         # (sometimes it might not work so scroll down to element first and then drag drop)
-        ActionChains(self._web_driver.driver).drag_and_drop(self.find_element(source_element),
-                                                            self.find_element(destination_element)).perform()
+        self.action().drag_and_drop(self.find_element(source_element),
+                                    self.find_element(destination_element)).perform()
 
     def drag_from_drop_to_js(self, source_element, destination_element):
         # ActionChains(self._web_driver.driver).click_and_hold(self.find_element(source_element)).move_to_element(self.find_element(destination_element)).release(self.find_element(destination_element)).perform()
@@ -145,10 +146,10 @@ class BasePage(object):
             self.find_element(destination_element))
 
     def scroll_to(self, element):
-        ActionChains(self._web_driver.driver).move_to_element(self.find_element(element)).perform()
+        self.action().move_to_element(self.find_element(element)).perform()
 
     def double_click_element(self, element):
-        ActionChains(self._web_driver.driver).double_click(self.find_element(element)).perform()
+        self.action().double_click(self.find_element(element)).perform()
 
     def select_value_from_options(self, element, value):
         select = Select(self.find_element(element))

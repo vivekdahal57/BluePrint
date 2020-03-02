@@ -45,18 +45,12 @@ class AdminAddUserPage(BasePage):
     def select_group(self, groups):
         for group in groups:
             self._web_driver.send_value(self.add_user_group_search_text, group)
-            time.sleep(2)
-            # if self._web_driver.verify_text(self.add_user_group_option, group):
             self._web_driver.double_click_element(self.add_user_group_option)
-            # self._web_driver.click_element(self.add_user_group_add_arrow_button)
 
     def select_permission(self, permissions):
         for permission in permissions:
             self._web_driver.send_value(self.add_user_permission_search_text, permission)
-            time.sleep(2)
-            # if self._web_driver.verify_text(self.add_user_permission_option, permission):
             self._web_driver.double_click_element(self.add_user_permission_option)
-            # self._web_driver.click_element(self.add_user_permission_add_arrow_button)
 
     def create_user(self, username, password):
         self._web_driver.send_value(self.add_user_username_field, username)

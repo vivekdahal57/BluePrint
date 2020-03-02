@@ -1,5 +1,5 @@
 import os
-from seleniumwire import webdriver
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
 
@@ -15,8 +15,6 @@ def browser_chrome(context):
     options.add_argument('--ignore-ssl-errors')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     browser = webdriver.Chrome(os.path.join(directory + '/', 'resource/chromedriver.exe'), chrome_options=options)
-    val = dict({'authorization': 'Basic bm9ibGVfdGVhbTppdCB3YXMgdGhlIGJsdXJzdCBvZiB0aW1lcw=='})
-    browser.header_overrides = val
     context.web = BasePage(browser)
     yield context.web
     browser.quit()
@@ -44,8 +42,6 @@ def browser_ie(context):
 def browser_firefox(context):
     # for firefox browser, gecko driver path is kept in the environment's PATH variable
     browser = webdriver.Firefox(executable_path=os.path.join(directory + '/', 'resource/geckodriver.exe'))
-    val = dict({'authorization': 'Basic bm9ibGVfdGVhbTppdCB3YXMgdGhlIGJsdXJzdCBvZiB0aW1lcw=='})
-    browser.header_overrides = val
     context.web = BasePage(browser)
     yield context.web
     browser.quit()

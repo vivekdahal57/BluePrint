@@ -1,18 +1,18 @@
 Feature: User attempts perform cluster and collection operation
 
-  Scenario: User creates a collection
+  Scenario: User creates a collection with suffix 1
     Given user is in blueprint Login page
     When user use automation_user and Winter20
     Then user succeed to login
     Then logged in user can create collection with name automation_collection1 and with file img.PNG
     Then user succeed to logout
 
-#  Scenario: User creates a collection
-#    Given user is in blueprint Login page
-#    When user use automation_user and Winter20
-#    Then user succeed to login
-#    Then logged in user can create collection with name automation_collection2 and with file img.PNG
-#    Then user succeed to logout
+  Scenario: User creates a collection with suffix 2
+    Given user is in blueprint Login page
+    When user use automation_user and Winter20
+    Then user succeed to login
+    Then logged in user can create collection with name automation_collection2 and with file XlsTest.xls
+    Then user succeed to logout
 
   Scenario: Admin User is able to create cluster
     Given admin user is in dashboard page after login with shailaza.dhakal@noble.ai and Winter20
@@ -48,3 +48,4 @@ Feature: User attempts perform cluster and collection operation
     Then user succeed to login
     Then user navigate to Architect application
     Then user can drag transfer-batch to automation_cluster1 after selecting automation_collection1
+    Then user succeed to logout from architect application

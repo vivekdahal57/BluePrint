@@ -1,14 +1,10 @@
 import time
-from telnetlib import EC
 
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
 
 from page_object.admin.AdminLoginPage import AdminLoginPage
 from page_object.base_page import BasePage
-from page_object.blueprint.BlueprintLoginPage import BlueprintLoginPage
 
 
 class ArchitectDashboardPage(BasePage):
@@ -17,8 +13,6 @@ class ArchitectDashboardPage(BasePage):
     logout_link = (By.XPATH, "//span[contains(text(),'Log Out')]")
     expand_link = (By.XPATH, "//span[contains(text(),'Expand')]")
     collections_drop_down = (By.NAME, "collections")
-    transfer_batch_all_list_path = "//main[@id='page-wrap']//li"
-
     _web_driver_wait = None
 
     def __init__(self, obj):
@@ -27,14 +21,9 @@ class ArchitectDashboardPage(BasePage):
 
     def verify_architect_dashboard(self):
         self._web_driver.verify_text(self.dashboard_title_text, 'Organize')
-        self._web_driver.driver.get("https://staging.internal.noble.ai/architect/organize")
 
     def select_collection(self, collection_name):
         collection_menu = (By.XPATH, "//option[contains(text(),'" + collection_name + "')]")
-        time.sleep(5)
-        action = ActionChains(self._web_driver.driver)
-        action.key_down(Keys.CONTROL).send_keys(Keys.F5).key_up(Keys.CONTROL).perform()
-        time.sleep(5)
         self._web_driver.find_element(self.expand_link, 120)
         element = self._web_driver.find_element(collection_menu)
         self._web_driver.driver.execute_script("arguments[0].scrollIntoView(true);", element)
