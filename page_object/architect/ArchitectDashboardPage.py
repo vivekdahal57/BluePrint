@@ -11,6 +11,7 @@ class ArchitectDashboardPage(BasePage):
     dashboard_title_text = (By.XPATH, "//h3[contains(text(),'Organize')]")
     left_menu_drop_down = (By.XPATH, "//img[@class='menu-default']")
     logout_link = (By.XPATH, "//span[contains(text(),'Log Out')]")
+    ingest_link = (By.XPATH, "//a[contains(text(),'Ingest')]")
     expand_link = (By.XPATH, "//span[contains(text(),'Expand')]")
     collections_drop_down = (By.NAME, "collections")
     _web_driver_wait = None
@@ -52,3 +53,8 @@ class ArchitectDashboardPage(BasePage):
             if x != 1:
                 self._web_driver.driver.close()
             time.sleep(1)
+
+    def go_to_ingest_page(self):
+        self._web_driver.scroll_to(self.left_menu_drop_down)
+        self._web_driver.click_element(self.ingest_link)
+        time.sleep(1)

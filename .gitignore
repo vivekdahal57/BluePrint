@@ -10,3 +10,4 @@ __pycache__/
 *.py[cod]
 *.log
 allureExecutor.bat
+/resource/*.crx

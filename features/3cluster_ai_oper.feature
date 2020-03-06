@@ -42,10 +42,3 @@ Feature: User attempts perform cluster and collection operation
     Then user lands on cluster detail page by searching automation_cluster1 cluster name
     Then user succeed to logout
 
-  Scenario: Staff User can assign batch to the cluster
-    Given user is in blueprint Login page
-    When user use shailaza.dhakal@noble.ai and Winter20
-    Then user succeed to login
-    Then user navigate to Architect application
-    Then user can drag transfer-batch to automation_cluster1 after selecting automation_collection1
-    Then user succeed to logout from architect application

@@ -13,6 +13,7 @@ class AdminDashboardPage(BasePage):
     user_link = (By.XPATH, "//a[contains(text(),'Users')]")
     collection_link = (By.XPATH, "//a[contains(text(),'Collections')]")
     cluster_link = (By.XPATH, "//a[contains(text(),'Cluster')]")
+    ingest_plans_link = (By.XPATH, "//a[contains(text(),'Ingest plans')]")
 
     def __init__(self, obj):
         self._web_driver = obj
@@ -43,3 +44,7 @@ class AdminDashboardPage(BasePage):
     def goto_cluster_list(self):
         self._web_driver.scroll_to(self.cluster_link)
         self._web_driver.click_element(self.cluster_link)
+
+    def goto_ingest_plans_list(self):
+        self._web_driver.scroll_to(self.ingest_plans_link)
+        self._web_driver.click_element(self.ingest_plans_link)

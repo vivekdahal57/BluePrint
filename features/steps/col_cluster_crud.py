@@ -1,4 +1,4 @@
-from behave import step
+from behave import step, runner
 from page_object.global_objects import *
 
 
@@ -9,7 +9,6 @@ def delete_collection(context, collection_name):
     admin_add_collection_page.verify_change_collection_page()
     admin_add_collection_page.delete_collection()
     admin_collection_list_page.verify_collections_list_page()
-    admin_dashboard_page.logout()
 
 
 @step("admin user can delete {cluster_name} cluster")
@@ -19,7 +18,6 @@ def delete_cluster(context, cluster_name):
     admin_add_cluster_page.verify_change_cluster_page()
     admin_add_cluster_page.delete_cluster()
     admin_cluster_list_page.verify_clusters_list_page()
-    admin_dashboard_page.logout()
 
 
 @step(
@@ -31,7 +29,6 @@ def create_cluster(context, cluster_name, collection_name, status):
     admin_add_cluster_page.verify_add_cluster_page()
     admin_add_cluster_page.create_or_change_cluster(cluster_name, collection_name, status)
     admin_cluster_list_page.verify_cluster_list_page()
-    # admin_dashboard_page.logout()
 
 
 @step(
@@ -43,7 +40,6 @@ def change_cluster(context, cluster_name, collection_name, status):
     admin_add_cluster_page.verify_change_cluster_page()
     admin_add_cluster_page.create_or_change_cluster(cluster_name, collection_name, status)
     admin_cluster_list_page.verify_cluster_list_page()
-    # admin_dashboard_page.logout()
 
 
 @step("admin user can delete a cluster with name {cluster_name}")
@@ -54,7 +50,6 @@ def delete_cluster(context, cluster_name):
     admin_add_cluster_page.verify_change_cluster_page()
     admin_add_cluster_page.delete_cluster()
     admin_cluster_list_page.verify_cluster_list_page()
-    admin_dashboard_page.logout()
 
 
 @step("logged in user can search with filename {filename} and land on it")
@@ -70,6 +65,24 @@ def search_collection(context, collection_name):
 
 
 @step("user lands on cluster detail page by searching {cluster_name} cluster name")
-def search_custer(context, cluster_name):
+def search_cluster(context, cluster_name):
     blueprint_collection_details_page.click_element(blueprint_collection_details_page.dashboard_cluster_name_text)
     blueprint_cluster_details_page.verify_cluster_details_page(cluster_name)
+
+
+@step("admin user can navigate to ingest plans and verify draft plan for {cluster_name}")
+def go_to_ingest_plan(context, cluster_name):
+    admin_dashboard_page.goto_ingest_plans_list()
+    admin_ingest_plans_list_page.verify_ingest_plan_list_page()
+    admin_ingest_plans_list_page.search_and_land_to_change_ingest_plan(cluster_name)
+    admin_ingest_plans_list_page.verify_ingest_plan_change_page()
+
+
+@step("admin user can delete ingest draft plan created for cluster {cluster_name}")
+def delete_ingest_plans(context, cluster_name):
+    admin_dashboard_page.goto_ingest_plans_list()
+    admin_ingest_plans_list_page.verify_ingest_plan_list_page()
+    admin_ingest_plans_list_page.search_and_land_to_change_ingest_plan(cluster_name)
+    admin_ingest_plans_list_page.verify_ingest_plan_change_page()
+    admin_ingest_plans_list_page.delete_ingest_plan()
+    admin_ingest_plans_list_page.verify_ingest_plan_list_page()

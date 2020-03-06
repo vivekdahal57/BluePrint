@@ -1,4 +1,6 @@
+from page_object.admin.AdminIngestPlansListPage import AdminIngestPlansListPage
 from page_object.architect.ArchitectDashboardPage import ArchitectDashboardPage
+from page_object.architect.ArchitectIngestPage import ArchitectIngestPage
 from page_object.base_page import BasePage
 from page_object.admin.AdminAddUserProfilePage import AdminAddUserProfilePage
 from page_object.admin.AdminUserProfileListPage import AdminUserProfileListPage
@@ -24,6 +26,7 @@ blueprint_ingested_document_page = BlueprintIngestedDetailPage(base_page)
 blueprint_collection_details_page = BlueprintCollectionDetailPage(base_page)
 blueprint_cluster_details_page = BlueprintClusterDetailPage(base_page)
 architect_dashboard_page = ArchitectDashboardPage(base_page)
+architect_ingest_page = ArchitectIngestPage(base_page)
 
 admin_login_page = AdminLoginPage(base_page)
 admin_dashboard_page = AdminDashboardPage(base_page)
@@ -35,3 +38,4 @@ admin_collection_list_page = AdminCollectionsListPage(base_page)
 admin_add_collection_page = AdminAddCollectionPage(base_page)
 admin_cluster_list_page = AdminClustersListPage(base_page)
 admin_add_cluster_page = AdminAddClusterPage(base_page)
+admin_ingest_plans_list_page = AdminIngestPlansListPage(base_page)

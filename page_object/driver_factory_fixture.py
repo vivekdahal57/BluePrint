@@ -12,6 +12,7 @@ directory = os.path.dirname(os.path.dirname(__file__))
 def browser_chrome(context):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
+    options.add_extension(os.path.join(directory + '/', 'resource//ljngjbnaijcbncmcnjfhigebomdlkcjo.crx'))
     options.add_argument('--ignore-ssl-errors')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     browser = webdriver.Chrome(os.path.join(directory + '/', 'resource/chromedriver.exe'), chrome_options=options)

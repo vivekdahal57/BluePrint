@@ -81,10 +81,10 @@ class BasePage(object):
         # This method get text from the element and verify it
         assert text in self.get_text(element, timeout), 'Element {} not found'.format(element)
 
-    def click_element(self, element):
+    def click_element(self, element, timeout=__TIMEOUT):
         # This method clicks on the element provided by the user.
         # It first find the element, wait till its loaded and then click it.
-        elm = self.find_element(element)
+        elm = self.find_element(element, timeout)
         elm.click()
 
     def reload_page(self):
