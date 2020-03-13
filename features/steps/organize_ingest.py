@@ -24,7 +24,7 @@ def create_draft_ingest_plan(context, collection_name, cluster_name):
 
 
 @step('user can create a new step with {step_type} for {file_name} file for collection {collection_name} and cluster {cluster_name}')
-def create_draft_ingest_plan(context, step_type, file_name,collection_name, cluster_name):
+def create_draft_ingest_plan(context, step_type, file_name, collection_name, cluster_name):
     architect_dashboard_page.go_to_ingest_page()
     architect_ingest_page.verify_ingest_dashboard()
     architect_ingest_page.expand_collection(collection_name)

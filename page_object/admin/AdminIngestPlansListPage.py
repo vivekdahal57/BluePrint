@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 
 from page_object.base_page import BasePage
+from page_object.admin.AdminIngestResultsListPage import AdminIngestResultsListPage
 
 
 class AdminIngestPlansListPage(BasePage):
@@ -17,6 +18,7 @@ class AdminIngestPlansListPage(BasePage):
     # //table[@id='result_list']//tbody//tr//td[contains(text(),'automation_cluster1')]//..//th//a
     ingest_plan_delete_button = (By.XPATH, "//a[@class='deletelink']")
     confirm_delete = (By.XPATH, "//form/div[1]/input[2]")
+    home_page_link = (By.XPATH, "//a[contains(text(),'Django administration')]")
 
     def __init__(self, obj):
         self._web_driver = obj
@@ -24,6 +26,9 @@ class AdminIngestPlansListPage(BasePage):
     def get_search_path(self, cluster_name):
         path = self.ingest_search_col_temp_path + "[contains(text(),'" + cluster_name + "')]"
         return path
+
+    def go_to_dashboard_page(self):
+        self._web_driver.click_element(self.home_page_link)
 
     def verify_ingest_plan_list_page(self):
         self._web_driver.verify_text(self.ingest_title_text, "Select ingest plan to change")
@@ -38,6 +43,8 @@ class AdminIngestPlansListPage(BasePage):
         elm = (By.XPATH, self.get_search_path(cluster_name))
         clk_ele = (By.XPATH, self.get_search_path(cluster_name) + "//..//th//a")
         self._web_driver.verify_text(elm, cluster_name)
+        plan_name = self._web_driver.find_element(clk_ele).text
+        AdminIngestResultsListPage.plan_name = plan_name
         self._web_driver.click_element(clk_ele)
 
     def verify_ingest_plan_change_page(self):

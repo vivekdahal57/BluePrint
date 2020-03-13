@@ -35,6 +35,9 @@ class BasePage(object):
         self._web_driver.driver.maximize_window()
         self._web_driver.driver.get(url)
 
+    def get_current_url(self):
+        return self._web_driver.driver.current_url
+
     def action(self):
         return ActionChains(self._web_driver.driver)
 
@@ -73,8 +76,8 @@ class BasePage(object):
         elm = self.find_element(element, timeout)
         return elm.text
 
-    def wait_until_element_disappear(self, element):
-        _web_driver_wait = WebDriverWait(self._web_driver.driver, BasePage.__TIMEOUT)
+    def wait_until_element_disappear(self, element, timeout=__TIMEOUT):
+        _web_driver_wait = WebDriverWait(self._web_driver.driver, timeout)
         return _web_driver_wait.until(EC.invisibility_of_element_located(element))
 
     def verify_text(self, element, text, timeout=__TIMEOUT):

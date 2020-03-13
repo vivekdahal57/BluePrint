@@ -1,4 +1,5 @@
 from page_object.admin.AdminIngestPlansListPage import AdminIngestPlansListPage
+from page_object.admin.AdminIngestResultsListPage import AdminIngestResultsListPage
 from page_object.architect.ArchitectDashboardPage import ArchitectDashboardPage
 from page_object.architect.ArchitectIngestPage import ArchitectIngestPage
 from page_object.base_page import BasePage
@@ -39,3 +40,4 @@ admin_add_collection_page = AdminAddCollectionPage(base_page)
 admin_cluster_list_page = AdminClustersListPage(base_page)
 admin_add_cluster_page = AdminAddClusterPage(base_page)
 admin_ingest_plans_list_page = AdminIngestPlansListPage(base_page)
+admin_ingest_result_list_page = AdminIngestResultsListPage(base_page)

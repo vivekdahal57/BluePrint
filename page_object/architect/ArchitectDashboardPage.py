@@ -10,10 +10,11 @@ from page_object.base_page import BasePage
 class ArchitectDashboardPage(BasePage):
     dashboard_title_text = (By.XPATH, "//h3[contains(text(),'Organize')]")
     left_menu_drop_down = (By.XPATH, "//img[@class='menu-default']")
-    logout_link = (By.XPATH, "//span[contains(text(),'Log Out')]")
+    logout_link = (By.XPATH, "//a[contains(text(),'Log Out')]")
     ingest_link = (By.XPATH, "//a[contains(text(),'Ingest')]")
     expand_link = (By.XPATH, "//span[contains(text(),'Expand')]")
-    collections_drop_down = (By.NAME, "collections")
+    collections_drop_down = (By.XPATH, "//div[@class='reactor-dropdown__indicators css-1wy0on6']")
+    collections_menu_path = "//div[@class='reactor-dropdown__menu css-26l3qy-menu']//div//div"
     _web_driver_wait = None
 
     def __init__(self, obj):
@@ -24,10 +25,11 @@ class ArchitectDashboardPage(BasePage):
         self._web_driver.verify_text(self.dashboard_title_text, 'Organize')
 
     def select_collection(self, collection_name):
-        collection_menu = (By.XPATH, "//option[contains(text(),'" + collection_name + "')]")
+        path = self.collections_menu_path + "[contains(text(),'" + collection_name + "')]"
+        collection_menu = (By.XPATH, path)
         self._web_driver.find_element(self.expand_link, 120)
-        element = self._web_driver.find_element(collection_menu)
-        self._web_driver.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        self._web_driver.find_element(self.collections_drop_down).click()
+        self._web_driver.driver.execute_script("arguments[0].scrollIntoView(true);", self.find_element(collection_menu))
         self._web_driver.click_element(collection_menu)
 
     def drag_transfer_batch_to_cluster(self, cluster_name):

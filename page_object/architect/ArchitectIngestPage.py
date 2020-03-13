@@ -9,12 +9,12 @@ from page_object.base_page import BasePage
 
 
 class ArchitectIngestPage(BasePage):
-    ingest_title_text = (By.XPATH, "//h3[contains(text(),'Ingest Plans')]")
+    ingest_title_text = (By.XPATH, "//div[contains(text(),'Ingest Plans')]")
     left_menu_drop_down = (By.XPATH, "//img[@class='menu-default']")
     logout_link = (By.XPATH, "//span[contains(text(),'Log Out')]")
     ingest_link = (By.XPATH, "//span[contains(text(),'Ingest')]")
     create_draft_btn = (By.XPATH, "//span[contains(text(),'Create Draft')]")
-    ingest_plan_id_drop_down = (By.XPATH, "//select[@name='ingest_plans']//option[1]")
+    ingest_plan_id_drop_down = (By.XPATH, "//div[@class='reactor-dropdown__single-value css-1uccc91-singleValue']")
     ingest_and_activate_button = (By.XPATH, "//span[contains(text(),'Ingest & Activate')]")
     ingest_tree_view_tab = (By.ID, "react-tabs-0")
     ingest_json_tab = (By.ID, "react-tabs-2")
@@ -30,6 +30,7 @@ class ArchitectIngestPage(BasePage):
     ingest_ingested_expand_icon = (By.XPATH, "//div[@class='ingest-cluster-files']/ul[@class='rc-tree']/li[3]/span[1]")
     ingest_unstaged_staged_path = "//span"
     ingest_right_click_stage_btn = (By.XPATH, "//span[@class='button__content'][contains(text(),'Stage')]")
+    ingest_files_tab = (By.XPATH, "//div[contains(text(),'Files')]")
 
     _web_driver_wait = None
 
@@ -65,6 +66,7 @@ class ArchitectIngestPage(BasePage):
         self._web_driver.verify_text(self.ingest_plan_id_drop_down, "(Draft)")
 
     def make_file_staged(self, file_name):
+        self._web_driver.click_element(self.ingest_files_tab)
         file_ele = (By.XPATH, self.get_staged_unstaged_path(file_name))
         self._web_driver.click_element(self.ingest_unstage_expand_icon)
         self._web_driver.click_element(file_ele)
@@ -81,7 +83,7 @@ class ArchitectIngestPage(BasePage):
         self._web_driver.click_element(self.ingest_plan_create_button)
         self._web_driver.click_element(self.ingest_json_tab)
         self._web_driver.send_value(self.ingest_json_input_area,
-                                    "{\"steps\":[{\"step_type\":\"FixedBoundingBoxStep\",\"name\":\"bb-key-Etly_3yIe\",\"step_selector\":\"\",\"unpack_file_part\":\"0\",\"x\":\"0.023860454249569583\",\"y\":\"0.16821724955038653\",\"w\":\"0.7188083142914632\",\"h\":\"0.7416174751100704\"}],\"schema\":{\"data_labels\":[]}}")
+                                    "{\"steps\": [{\"step_type\": \"FixedBoundingBoxStep\",\"name\": \"bbox - label1\",\"unpack_file_part\": \"0\",\"x\": \"0.1\",\"y\": \"0.2\",\"w\": \"0.4\",\"h\": \"0.05\",\"next_steps\": [{\"step_type\": \"CreateDataAtomStep\",\"name\": \"atom - label1\",\"data_label_name\": \"label1\"}]}],\"schema\": {\"data_labels\": [{\"name\": \"label1\",\"displayName\": \"label1\",\"type\": \"STRING\"}]}}")
         self._web_driver.click_element(self.ingest_and_activate_button)
 
     def verify_ingested_file(self, file_name):

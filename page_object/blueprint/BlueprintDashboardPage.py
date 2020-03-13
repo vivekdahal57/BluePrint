@@ -44,8 +44,7 @@ class BlueprintDashboardPage(BasePage):
         return elm
 
     def get_view_collection_button_path_by_name(self, collection_name):
-        view_collection_path = self.dashboard_collection_name_path + "//h3//div[contains(text(),'" + collection_name + "')]//..//..//..//div[3]//a[1]//span[1]"
-        print(view_collection_path)
+        view_collection_path = self.dashboard_collection_name_path + "//h3//div[contains(text(),'" + collection_name + "')]//..//..//..//div[3]//a[1]//span[contains(text(),'View Collection')]"
         elm = (By.XPATH, view_collection_path)
         return elm
 
@@ -55,6 +54,10 @@ class BlueprintDashboardPage(BasePage):
             self._web_driver.click_element(self.dashboard_blueprint_select_half_button)
         else:
             self._web_driver.reload_page()
+        url = self._web_driver.get_current_url()
+        if "reactor" in url.split("/"):
+            print(url)
+            self._web_driver.open(url.replace("reactor", "blueprint"))
         self._web_driver.verify_text(self.dashboard_title_text, 'All Collections', 120)
 
     def skip_tour(self, is_accept):
@@ -73,7 +76,7 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.click_element(self.tos_get_started)
 
     def logout(self):
-        self._web_driver.wait_until_element_disappear(self.loading_text)
+        self._web_driver.wait_until_element_disappear(self.loading_text, 120)
         self._web_driver.scroll_to(self.profile_drop_down)
         self._web_driver.click_element(self.logout_link)
         self.blueprint_login_page.verify_login_page()
