@@ -14,6 +14,9 @@ class BlueprintDashboardPage(BasePage):
     profile_drop_down = (By.XPATH, "//div[@class='profile']/div[1]")
     logout_link = (By.XPATH, "//span[contains(text(),'Logout')]")
     architect_link = (By.XPATH, "//span[contains(text(),'Switch to Noble Architect')]")
+    user_manual_link = (By.XPATH, "//span[contains(text(),'User Manual')]")
+    faq_link = (By.XPATH, "//span[contains(text(),'FAQ')]")
+    terms_of_service_link = (By.XPATH, "//span[contains(text(),'Terms of Service')]")
     loading_text = (By.XPATH, "//p[contains(text(),'Loading...')]")
     tos_skip_tour_link = (By.XPATH, "//span[contains(text(),'Skip Tour')]")
     tos_i_agree = (By.XPATH, "//div[@class='form-checkbox__view']")
@@ -22,6 +25,7 @@ class BlueprintDashboardPage(BasePage):
     dashboard_left_menu_drop_down = (By.XPATH, "//div[@class='left-side']")
     dashboard_left_new_col_button = (By.XPATH, "//span[contains(text(),'+ New Collection')]")
     dashboard_browse_file_button = (By.XPATH, "//button[@class='upload-content']")
+    dashboard_upload_cancel_btn = (By.XPATH, "//button[@class='cancel-upload']")
     dashboard_collection_name_popup = (By.XPATH, "//input[@class='textInput']")
     dashboard_collection_ok_button = (
         By.XPATH, "//div[@class='modal-form__actions']//button[@class='button button--primary button--min-width']")
@@ -30,7 +34,16 @@ class BlueprintDashboardPage(BasePage):
     dashboard_search_field = (By.XPATH, "//input[@placeholder='Search Here']")
     dashboard_search_result = (By.XPATH, "//mark[contains(@class,'foundWord')]")
     dashboard_collection_name_path = "//main[@id='page-wrap']//div//div"
-
+    dashboard_sort_by_drop_down = (By.XPATH, "//div[@class='sortDropdownWrapper']")
+    dashboard_sort_old_new = (By.XPATH, "//li[contains(text(),'CREATED DATE (OLD to NEW)')]")
+    dashboard_sort_new_old = (By.XPATH, "//li[contains(text(),'CREATED DATE (NEW to OLD)')]")
+    dashboard_sort_high_low = (By.XPATH, "//li[contains(text(),'CERTAINTY SCORE (HIGH to LOW)')]")
+    dashboard_sort_low_high = (By.XPATH, "//li[contains(text(),'CERTAINTY SCORE (LOW to HIGH)')]")
+    dashboard_collection_number = (By.XPATH, "//div[@class='dashboard__preview-modules']//div[1]//div[1]//h3[1]/div[1]")
+    dashboard_upload_error = (By.XPATH, "//span[@class='info info--error']")
+    user_manual_component_text = (By.XPATH, "//a[contains(text(),'1. Create or Select Existing Collection')]")
+    faq_title_text = (By.XPATH, "//h2[contains(text(),'Frequently Asked Questions')]")
+    terms_of_service_text = (By.XPATH, "//a[contains(text(),'click here')]")
     _web_driver_wait = None
 
     def __init__(self, obj):
@@ -76,6 +89,13 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.click_element(self.tos_get_started)
 
     def logout(self):
+        handles = self._web_driver.driver.window_handles
+        for x in range(len(handles), 0, -1):
+            time.sleep(1)
+            self._web_driver.driver.switch_to.window(handles[x - 1])
+            if x != 1:
+                self._web_driver.driver.close()
+
         self._web_driver.wait_until_element_disappear(self.loading_text, 120)
         self._web_driver.scroll_to(self.profile_drop_down)
         self._web_driver.click_element(self.logout_link)
@@ -87,11 +107,25 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.click_element(self.dashboard_left_new_col_button)
         self.verify_upload_popup()
         self._web_driver.upload_file(file_path)
-        self._web_driver.send_value(self.dashboard_collection_name_popup, collection_name)
-        self._web_driver.click_element(self.dashboard_collection_ok_button)
-        time.sleep(1)
-        self._web_driver.reload_page()
-        time.sleep(1)
+        is_error = self._web_driver.does_element_exist(self.dashboard_upload_error)
+        flag = None
+        if is_error:
+            error_msg = self._web_driver.get_text(self.dashboard_upload_error)
+            for value in ['Error: Max upload size exceeds 2 GB.', 'Cannot upload empty file.',
+                          'File type not supported.']:
+                try:
+                    assert error_msg in value, "not this error" + error_msg
+                    flag = True
+                    break
+                except AssertionError:
+                    flag = False
+            if not flag:
+                raise ValueError('Unknown error message visible')
+        else:
+            time.sleep(2)
+            self._web_driver.wait_until_element_disappear(self.dashboard_upload_cancel_btn, 600)
+            self._web_driver.send_value(self.dashboard_collection_name_popup, collection_name)
+            self._web_driver.click_element(self.dashboard_collection_ok_button)
 
     def verify_upload_popup(self):
         self._web_driver.verify_text(self.dashboard_browse_file_button, "Browse")
@@ -114,3 +148,50 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.verify_text(self.get_collection_path_by_name(collection_name), collection_name)
         self._web_driver.verify_text(self.get_view_collection_button_path_by_name(collection_name), "View Collection")
         self._web_driver.click_element(self.get_view_collection_button_path_by_name(collection_name))
+
+    def sort_by_and_verify(self, sort_criteria):
+        self._web_driver.scroll_to(self.dashboard_sort_by_drop_down)
+        if sort_criteria == "old to new":
+            self._web_driver.click_element(self.dashboard_sort_old_new)
+        elif sort_criteria == "new to old":
+            self._web_driver.click_element(self.dashboard_sort_new_old)
+        elif sort_criteria == "high to low":
+            self._web_driver.click_element(self.dashboard_sort_high_low)
+        elif sort_criteria == "low to high":
+            self._web_driver.click_element(self.dashboard_sort_low_high)
+        time.sleep(2)
+
+    def navigate_to_user_manual(self):
+        self._web_driver.wait_until_element_disappear(self.loading_text)
+        self._web_driver.scroll_to(self.profile_drop_down)
+        self._web_driver.click_element(self.user_manual_link)
+        time.sleep(1)
+        handles = self._web_driver.driver.window_handles
+        self._web_driver.driver.switch_to.window(handles[1])
+        self._web_driver.verify_text(self.user_manual_component_text, "Create or Select Existing Collection")
+
+    def navigate_to_faq(self):
+        self._web_driver.wait_until_element_disappear(self.loading_text)
+        self._web_driver.scroll_to(self.profile_drop_down)
+        self._web_driver.click_element(self.faq_link)
+        time.sleep(1)
+        handles = self._web_driver.driver.window_handles
+        self._web_driver.driver.switch_to.window(handles[1])
+        self._web_driver.verify_text(self.faq_title_text, "Frequently Asked Questions")
+
+    def navigate_to_terms_of_service(self):
+        self._web_driver.wait_until_element_disappear(self.loading_text)
+        self._web_driver.scroll_to(self.profile_drop_down)
+        self._web_driver.click_element(self.terms_of_service_link)
+        time.sleep(1)
+        handles = self._web_driver.driver.window_handles
+        self._web_driver.driver.switch_to.window(handles[1])
+        self._web_driver.verify_text(self.terms_of_service_text, "click here")
+
+    def navigate_to_google_analytics(self):
+        self._web_driver.click_element(self.terms_of_service_text)
+        time.sleep(1)
+        handles = self._web_driver.driver.window_handles
+        self._web_driver.driver.switch_to.window(handles[2])
+        if self._web_driver.get_current_url() != 'https://policies.google.com/technologies/partner-sites':
+            raise ValueError(self._web_driver.get_current_url())

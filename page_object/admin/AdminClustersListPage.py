@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 from page_object.base_page import BasePage
@@ -24,5 +25,5 @@ class AdminClustersListPage(BasePage):
     def search_and_land_to_change_cluster(self, cluster_name):
         self._web_driver.send_value(self.cluster_search_field, cluster_name)
         self._web_driver.click_element(self.cluster_search_button)
-        self._web_driver.verify_text(self.cluster_search_output, cluster_name)
+        self._web_driver.verify_text(self.cluster_search_output, cluster_name, 2)
         self._web_driver.click_element(self.cluster_search_output)

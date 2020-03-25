@@ -24,5 +24,5 @@ class AdminCollectionsListPage(BasePage):
     def search_and_land_to_change_collection(self, collection_name):
         self._web_driver.send_value(self.collection_search_field, collection_name)
         self._web_driver.click_element(self.collection_search_button)
-        self._web_driver.verify_text(self.collection_search_output, collection_name)
+        self._web_driver.verify_text(self.collection_search_output, collection_name, 2)
         self._web_driver.click_element(self.collection_search_output)

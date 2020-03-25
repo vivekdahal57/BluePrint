@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from page_object.base_page import BasePage
 
@@ -22,8 +23,12 @@ class AdminLoginPage(BasePage):
         self._web_driver.click_element(self.sign_in_button)
 
     def verify_login_fail(self):
-        self._web_driver.verify_text(self.incorrect_login_message,
-                                     'Please enter the correct username and password for a staff account. Note that both fields may be case-sensitive.')
+        try:
+            self._web_driver.verify_text(self.incorrect_login_message,
+                                         'Please enter the correct username and password for a staff account. Note that both fields may be case-sensitive.',
+                                         2)
+        except TimeoutException:
+            self.verify_login_page()
 
     def verify_authorization_fail(self, username):
         self._web_driver.verify_text(self.incorrect_login_message,

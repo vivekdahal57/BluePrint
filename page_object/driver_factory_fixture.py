@@ -12,6 +12,7 @@ directory = os.path.dirname(os.path.dirname(__file__))
 def browser_chrome(context):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
+    options.add_extension(os.path.join(directory + '/', 'resource//ljngjbnaijcbncmcnjfhigebomdlkcjo.crx'))
     options.add_argument('--ignore-ssl-errors')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     options.add_experimental_option('prefs', {'download.default_directory': os.path.join(directory, 'downloadLocation')})
@@ -22,7 +23,7 @@ def browser_chrome(context):
 
 
 def browser_chrome_headless(context):
-    chrome_options = Options()
+    chrome_options = webdriver.ChromeOptions()
     chrome_options.headless = True
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument("--window-size=1600x900")

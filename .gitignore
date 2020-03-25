@@ -11,3 +11,6 @@ __pycache__/
 *.log
 allureExecutor.bat
 /resource/*.crx
+/downloadLocation/
+/downloadLocation/*.*
+/features/iam_testcases.zip

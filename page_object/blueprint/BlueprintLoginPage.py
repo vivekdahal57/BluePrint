@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 from page_object.base_page import BasePage
@@ -24,4 +25,7 @@ class BlueprintLoginPage(BasePage):
         self._web_driver.click_element(self.sign_in_button)
 
     def verify_login_fail(self):
-        self._web_driver.verify_text(self.incorrect_login_message, 'Incorrect email and/or password.')
+        try:
+            self._web_driver.verify_text(self.incorrect_login_message, 'Incorrect email and/or password.', 2)
+        except TimeoutException:
+            self.verify_login_page()

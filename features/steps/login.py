@@ -1,8 +1,32 @@
-import time
-
 from behave import given, when, then, step
 from page_object.global_objects import blueprint_login_page, blueprint_dashboard_page, admin_login_page, \
-    admin_dashboard_page, blueprint_collection_details_page, architect_dashboard_page
+    admin_dashboard_page, architect_dashboard_page
+
+
+def get_username(context, username):
+    if username == 'admin_username':
+        return context.config.userdata.get('correct_admin_username')
+    if username == 'correct_username':
+        return context.config.userdata.get('correct_normal_username')
+    if username == 'created_username':
+        return context.config.userdata.get('created_normal_username')
+    if username == 'staff_username':
+        return context.config.userdata.get('created_staff_username')
+    else:
+        return username
+
+
+def get_password(context, password):
+    if password == 'admin_password':
+        return context.config.userdata.get('correct_admin_password')
+    if password == 'correct_password':
+        return context.config.userdata.get('correct_normal_password')
+    if password == 'created_password':
+        return context.config.userdata.get('created_normal_password')
+    if password == 'staff_password':
+        return context.config.userdata.get('created_staff_password')
+    else:
+        return password
 
 
 @given('user is in blueprint Login page')
@@ -13,6 +37,12 @@ def open_browser(context):
 
 @when('user use {username} and {password}')
 def login_attempt(context, username, password):
+    if username != 'Blank' and password != 'Blank':
+        username = get_username(context, username)
+        password = get_password(context, password)
+    else:
+        username = ''
+        password = ''
     blueprint_login_page.login(username, password)
 
 
@@ -39,6 +69,8 @@ def open_browser(context):
 
 @when('admin user use {username} and {password}')
 def login_attempt(context, username, password):
+    username = get_username(context, username)
+    password = get_password(context, password)
     admin_login_page.login(username, password)
 
 
@@ -49,6 +81,7 @@ def failed_login(context):
 
 @then('normal user {username} failed to authorized')
 def failed_login(context, username):
+    username = get_username(context, username)
     admin_login_page.verify_authorization_fail(username)
 
 
@@ -62,14 +95,29 @@ def pass_login(context):
     admin_dashboard_page.logout()
 
 
-@step('logged in user can create collection with name {collection_name} and with file {file_name}')
-def create_collection(context, collection_name, file_name):
-    blueprint_dashboard_page.add_new_collection(context.config.userdata.get('upload_file_location') + file_name,
-                                                collection_name)
-    blueprint_collection_details_page.verify_collection_details_page(collection_name)
-
-
 @step('user navigate to Architect application')
 def user_navigate_to_architect(context):
     blueprint_dashboard_page.navigate_to_architect()
     architect_dashboard_page.verify_architect_dashboard()
+
+
+@step('user navigate to User Manual page')
+def user_navigate_to_user_manual(context):
+    blueprint_dashboard_page.navigate_to_user_manual()
+
+
+@step('user navigate to FAQ page')
+def user_navigate_to_faq(context):
+    blueprint_dashboard_page.navigate_to_faq()
+
+
+@step('user navigate to Terms of Service page')
+def user_navigate_to_terms_service(context):
+    blueprint_dashboard_page.navigate_to_terms_of_service()
+
+
+@step('user navigate to Google Analytics page')
+def user_navigate_to_google_analytics(context):
+    blueprint_dashboard_page.navigate_to_terms_of_service()
+    blueprint_dashboard_page.navigate_to_google_analytics()
+    blueprint_login_page.open(context.config.userdata.get('blueprint_url'))

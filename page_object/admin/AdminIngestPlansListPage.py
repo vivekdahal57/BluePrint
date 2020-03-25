@@ -42,7 +42,7 @@ class AdminIngestPlansListPage(BasePage):
         # self._web_driver.click_element(self.cluster_search_button)
         elm = (By.XPATH, self.get_search_path(cluster_name))
         clk_ele = (By.XPATH, self.get_search_path(cluster_name) + "//..//th//a")
-        self._web_driver.verify_text(elm, cluster_name)
+        self._web_driver.verify_text(elm, cluster_name, 2)
         plan_name = self._web_driver.find_element(clk_ele).text
         AdminIngestResultsListPage.plan_name = plan_name
         self._web_driver.click_element(clk_ele)

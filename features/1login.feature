@@ -11,10 +11,11 @@ Feature: User attempts to Login to Noble Application
       | shailaza.dhakal@noble.ai | wrongpass  |
       | @#$%##$%                 | #$%^$#@#%% |
       | wronguser                | Winter20   |
+      | Blank                    | Blank      |
 
   Scenario: User succeed to login in Blueprint
     Given user is in blueprint Login page
-    When user use automation_user and Winter20
+    When user use correct_username and correct_password
     Then user succeed to login
     Then user succeed to logout
 
@@ -29,16 +30,17 @@ Feature: User attempts to Login to Noble Application
       | shailaza.dhakal@noble.ai | wrongpass  |
       | @#$%##$%                 | #$%^$#@#%% |
       | wronguser                | Winter20   |
+      | Blank                    | Blank      |
 
   Scenario: User succeed to login in Django Admin
     Given user is in admin Login page
-    When admin user use shailaza.dhakal@noble.ai and Winter20
+    When admin user use admin_username and admin_password
     Then admin user succeed to login
     Then admin user succeed to logout
 
   Scenario: Normal User cannot access admin panel
     Given user is in blueprint Login page
-    When user use automation_user and Winter20
+    When user use correct_username and correct_password
     Then user succeed to login
     Then user is in admin Login page
-    Then normal user automation_user failed to authorized
+    Then normal user correct_username failed to authorized
