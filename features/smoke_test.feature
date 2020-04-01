@@ -19,7 +19,6 @@ Feature: Smoke Test execution
     Then user is in admin Login page
     Then normal user correct_username failed to authorized
 
-
   Scenario: Admin User able to create inactive user
     Given admin user is in dashboard page after login with admin_username and admin_password
     When admin user creates a inactive user with username created_username and password created_password
@@ -29,13 +28,6 @@ Feature: Smoke Test execution
   Scenario: Admin User able to edit inactive user to active
     Given admin user is in dashboard page after login with admin_username and admin_password
     When admin user changes a inactive user to active with username created_username
-    Then admin user succeed to logout
-    Then user with username created_username and password created_password is able to login
-    Then user succeed to logout
-
-  Scenario: Created user land on dashboard by clicking I accept
-    Given admin user is in dashboard page after login with admin_username and admin_password
-    When admin user creates a user profile with username created_username
     Then admin user succeed to logout
     Then user with username created_username and password created_password is able to login
     Then user succeed to logout
@@ -50,7 +42,14 @@ Feature: Smoke Test execution
     Given user is in blueprint Login page
     When user use correct_username and correct_password
     Then user succeed to login
-    Then logged in user can create collection with name automation_collection1 and with file pdffile.txt
+    Then logged in user can create collection with name automation_collection1 and with file goodtxt.txt
+    Then user succeed to logout
+
+  Scenario: User creates a collection with suffix 2
+    Given user is in blueprint Login page
+    When user use correct_username and correct_password
+    Then user succeed to login
+    Then logged in user can create collection with name automation_collection2 and with file zipfile.zip
     Then user succeed to logout
 
   Scenario: Admin User is able to create cluster with suffix 1
@@ -59,11 +58,17 @@ Feature: Smoke Test execution
     Then admin user can change a cluster with name automation_cluster1 cluster for automation_collection1 collection and Proposed status
     Then admin user succeed to logout
 
+  Scenario: Admin User is able to create cluster with suffix 2
+    Given admin user is in dashboard page after login with admin_username and admin_password
+    When admin user creates a cluster with name automation_cluster2 cluster for automation_collection2 collection and Pending status
+    Then admin user can change a cluster with name automation_cluster2 cluster for automation_collection2 collection and Proposed status
+    Then admin user succeed to logout
+
   Scenario: User search for files in the collection
     Given user is in blueprint Login page
     When user use correct_username and correct_password
     Then user succeed to login
-    Then logged in user can search with filename pdffile.txt and land on it
+    Then logged in user can search with filename goodtxt.txt and land on it
     Then user succeed to logout
 
   Scenario: User search for automation_collection1 in dashboard and lands on details page
@@ -80,7 +85,7 @@ Feature: Smoke Test execution
     Then user navigate to Architect application
     Then user can drag transfer-batch to automation_cluster1 after selecting automation_collection1
     Then user can create a draft plan for collection automation_collection1 and for cluster automation_cluster1
-    Then user can create a new step with Bounding Box for pdffile.txt file for collection automation_collection1 and cluster automation_cluster1
+    Then user can create a new step with Bounding Box for goodtxt.txt file for collection automation_collection1 and cluster automation_cluster1
     Then user succeed to logout from architect application
 
   Scenario: Admin user can verify draft ingest plan from admin panel for cluster1
@@ -104,21 +109,8 @@ Feature: Smoke Test execution
     When user use correct_username and correct_password
     Then user succeed to login
     Then logged in user can search with collection name automation_collection1 and lands on collection details page
-    Then user can download structured files from the collection details page
+    Then user can download structured files from the collection details page using correct_password
     Then user succeed to logout
-
-  Scenario: User creates a collection with suffix 2
-    Given user is in blueprint Login page
-    When user use correct_username and correct_password
-    Then user succeed to login
-    Then logged in user can create collection with name automation_collection2 and with file zipfile.zip
-    Then user succeed to logout
-
-  Scenario: Admin User is able to create cluster with suffix 2
-    Given admin user is in dashboard page after login with admin_username and admin_password
-    When admin user creates a cluster with name automation_cluster2 cluster for automation_collection2 collection and Pending status
-    Then admin user can change a cluster with name automation_cluster2 cluster for automation_collection2 collection and Proposed status
-    Then admin user succeed to logout
 
   Scenario: User search for files in the collection2
     Given user is in blueprint Login page
@@ -165,9 +157,8 @@ Feature: Smoke Test execution
     When user use correct_username and correct_password
     Then user succeed to login
     Then logged in user can search with collection name automation_collection2 and lands on collection details page
-    Then user can download structured files from the collection details page
+    Then user can download structured files from the collection details page using correct_password
     Then user succeed to logout
-
 
   Scenario: Admin user can delete draft ingest plan from admin panel
     Given admin user is in dashboard page after login with admin_username and admin_password

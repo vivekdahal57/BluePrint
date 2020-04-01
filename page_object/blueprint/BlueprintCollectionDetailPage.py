@@ -1,5 +1,6 @@
 import time
 
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 from page_object.base_page import BasePage
@@ -51,12 +52,19 @@ class BlueprintCollectionDetailPage(BasePage):
     def verify_cluster_name(self, cluster_name):
         self._web_driver.verify_text(self.dashboard_cluster_name_text, cluster_name)
 
-    def download_structured_file(self):
+    def download_preparation(self, password):
         self._web_driver.click_element(self.collection_detail_download_btn)
-        self._web_driver.send_value(self.collection_detail_password_field, "Winter20")
+        self._web_driver.send_value(self.collection_detail_password_field, password)
         self._web_driver.find_element(self.collection_detail_reauthenticate_btn).click()
+
+    def download_structured_file(self, password):
+        self.download_preparation(password)
         time.sleep(1)
         self._web_driver.wait_until_element_disappear(self.collection_detail_cancel_download_btn, 120)
+
+    def download_and_click_back(self, password):
+        self.download_preparation(password)
+        self._web_driver.driver.back()
 
     def rename_collection(self, new_name):
         self._web_driver.click_element(self.collection_detail_rename_btn)
@@ -95,6 +103,17 @@ class BlueprintCollectionDetailPage(BasePage):
         self._web_driver.verify_text(self.collection_detail_cluster_status_bar, status_name)
 
     def verify_ingesting_bar(self, file_name):
-        self._web_driver.verify_text(self.collection_detail_ingesting_progress_bar, file_name)
-        self._web_driver.reload_page()
-        time.sleep(1)
+        try:
+            self._web_driver.find_element(self.collection_detail_ingesting_progress_bar, 2)
+            self._web_driver.verify_text(self.collection_detail_ingesting_progress_bar, file_name)
+            if '.zip' not in file_name and '.tar' not in file_name:
+                continue_loop = True
+                while continue_loop:
+                    try:
+                        self._web_driver.find_element(self.collection_detail_ingesting_progress_bar, 2)
+                        self._web_driver.reload_page()
+                        continue_loop = False
+                    except TimeoutException:
+                        continue_loop = True
+        except TimeoutException:
+            print("Not Visible")

@@ -35,7 +35,7 @@ def create_user(context, username, password):
 
 
 @when("admin user changes a inactive user to active with username {username}")
-def create_user(context, username):
+def update_user(context, username):
     username = get_username(context, username)
     is_staff = False
     if 'staff' in username:

@@ -1,3 +1,5 @@
+import warnings
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
@@ -44,6 +46,7 @@ class BlueprintIngestedDetailPage(BasePage):
                         self._web_driver.find_element(
                             (By.XPATH, self.ingested_file_path + "[contains(text(),'" + file + "')]"),
                             2)
+                        assert True, file
                     except TimeoutException:
                         error = True
                         error_list.append(file)

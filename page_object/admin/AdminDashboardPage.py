@@ -11,10 +11,12 @@ class AdminDashboardPage(BasePage):
     logout_page_title = (By.XPATH, "// h1[contains(text(), 'Logged out')]")
     user_profile_link = (By.XPATH, "//a[contains(text(),'User profiles')]")
     user_link = (By.XPATH, "//a[contains(text(),'Users')]")
+    group_link = (By.XPATH, "//a[contains(text(),'Groups')]")
     collection_link = (By.XPATH, "//a[contains(text(),'Collections')]")
     cluster_link = (By.XPATH, "//a[contains(text(),'Cluster')]")
     ingest_plans_link = (By.XPATH, "//a[contains(text(),'Ingest plans')]")
     ingest_results_link = (By.XPATH, "//a[contains(text(),'Ingest results')]")
+    periodic_tasks_link = (By.XPATH, "//a[contains(text(),'Periodic tasks')]")
     home_page_link = (By.XPATH, "//a[contains(text(),'Django administration')]")
 
     def __init__(self, obj):
@@ -38,6 +40,11 @@ class AdminDashboardPage(BasePage):
         self.go_to_dashboard_page()
         self._web_driver.scroll_to(self.user_link)
         self._web_driver.click_element(self.user_link)
+
+    def goto_groups_list(self):
+        self.go_to_dashboard_page()
+        self._web_driver.scroll_to(self.group_link)
+        self._web_driver.click_element(self.group_link)
 
     def goto_users_profile_list(self):
         self.go_to_dashboard_page()
@@ -63,3 +70,8 @@ class AdminDashboardPage(BasePage):
         self.go_to_dashboard_page()
         self._web_driver.scroll_to(self.ingest_results_link)
         self._web_driver.click_element(self.ingest_results_link)
+
+    def goto_periodic_tasks_list(self):
+        self.go_to_dashboard_page()
+        self._web_driver.scroll_to(self.periodic_tasks_link)
+        self._web_driver.click_element(self.periodic_tasks_link)

@@ -35,6 +35,19 @@ def open_browser(context):
     blueprint_login_page.verify_login_page()
 
 
+@step('user reapply blueprint url with http')
+def open_browser(context):
+    blueprint_login_page.open("http://" + str(context.config.userdata.get('blueprint_url')).split("@")[1])
+    blueprint_login_page.verify_login_page()
+
+
+@step('url changes to https automatically')
+def get_url(context):
+    url = context.web.get_current_url()
+    if "https" not in url:
+        assert False, url + " has Error!! No https found!!"
+
+
 @when('user use {username} and {password}')
 def login_attempt(context, username, password):
     if username != 'Blank' and password != 'Blank':

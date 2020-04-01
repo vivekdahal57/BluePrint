@@ -1,5 +1,6 @@
 import time
 
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 from page_object.architect.ArchitectDashboardPage import ArchitectDashboardPage
@@ -69,7 +70,6 @@ class BlueprintDashboardPage(BasePage):
             self._web_driver.reload_page()
         url = self._web_driver.get_current_url()
         if "reactor" in url.split("/"):
-            print(url)
             self._web_driver.open(url.replace("reactor", "blueprint"))
         self._web_driver.verify_text(self.dashboard_title_text, 'All Collections', 120)
 
@@ -101,7 +101,7 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.click_element(self.logout_link)
         self.blueprint_login_page.verify_login_page()
 
-    def add_new_collection(self, file_path, collection_name):
+    def upload_preparation(self, file_path):
         time.sleep(1)
         self._web_driver.click_element(self.dashboard_left_menu_drop_down)
         self._web_driver.click_element(self.dashboard_left_new_col_button)
@@ -121,11 +121,26 @@ class BlueprintDashboardPage(BasePage):
                     flag = False
             if not flag:
                 raise ValueError('Unknown error message visible')
+            return False
         else:
-            time.sleep(2)
+            return True
+
+    def add_new_collection(self, file_path, collection_name):
+        if self.upload_preparation(file_path):
+            time.sleep(1)
             self._web_driver.wait_until_element_disappear(self.dashboard_upload_cancel_btn, 600)
             self._web_driver.send_value(self.dashboard_collection_name_popup, collection_name)
             self._web_driver.click_element(self.dashboard_collection_ok_button)
+
+    def upload_and_cancel_in_10s(self, file_path):
+        if self.upload_preparation(file_path):
+            time.sleep(4)
+            self._web_driver.close_current_tab_and_switch_to_old()
+
+    def upload_and_click_back(self, file_path):
+        if self.upload_preparation(file_path):
+            time.sleep(4)
+            self._web_driver.driver.back()
 
     def verify_upload_popup(self):
         self._web_driver.verify_text(self.dashboard_browse_file_button, "Browse")
@@ -148,6 +163,13 @@ class BlueprintDashboardPage(BasePage):
         self._web_driver.verify_text(self.get_collection_path_by_name(collection_name), collection_name)
         self._web_driver.verify_text(self.get_view_collection_button_path_by_name(collection_name), "View Collection")
         self._web_driver.click_element(self.get_view_collection_button_path_by_name(collection_name))
+
+    def search_collection_till_not_found(self, collection_name):
+        try:
+            self._web_driver.verify_text(self.get_collection_path_by_name(collection_name), collection_name, 2)
+            assert False, 'Collection is visible'
+        except TimeoutException:
+            assert True
 
     def sort_by_and_verify(self, sort_criteria):
         self._web_driver.scroll_to(self.dashboard_sort_by_drop_down)

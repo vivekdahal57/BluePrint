@@ -31,10 +31,15 @@ class AdminAddUserPage(BasePage):
     add_user_permission_search_text = (By.ID, "id_permissions_input")
     add_user_permission_option = (By.XPATH, "//*[@name='user_permissions_old']/option[1]")
     add_user_delete_button = (By.XPATH, "//a[@class='deletelink']")
+    add_user_assigned_group_path = "//select[@id='id_groups_to']//option"
     confirm_delete = (By.XPATH, "//form/div[1]/input[2]")
 
     def __init__(self, obj):
         self._web_driver = obj
+
+    def get_assigned_group_element(self, group):
+        ele = (By.XPATH, self.add_user_assigned_group_path + "[contains(text(),'" + group + "')]")
+        return ele
 
     def verify_add_user_page(self):
         self._web_driver.verify_text(self.add_user_title_text, "Add user")
@@ -43,9 +48,23 @@ class AdminAddUserPage(BasePage):
         self._web_driver.verify_text(self.add_user_change_user_title_text, "Change user")
 
     def select_group(self, groups):
+        self._web_driver.scroll_to(self.add_user_group_search_text)
         for group in groups:
             self._web_driver.send_value(self.add_user_group_search_text, group)
+            time.sleep(2)
+            self._web_driver.click_element(self.add_user_group_option)
             self._web_driver.double_click_element(self.add_user_group_option)
+
+    def unselect_group_and_save(self, groups):
+        self._web_driver.scroll_to(self.add_user_group_search_text)
+        ele = self.get_assigned_group_element(groups)
+        self._web_driver.click_element(ele)
+        self._web_driver.double_click_element(ele)
+        self._web_driver.click_element(self.add_user_save_button)
+
+    def assign_group_and_save(self, groups):
+        self.select_group(groups)
+        self._web_driver.click_element(self.add_user_save_button)
 
     def select_permission(self, permissions):
         for permission in permissions:
@@ -72,7 +91,8 @@ class AdminAddUserPage(BasePage):
         is_checked = self._web_driver.find_element(self.add_user_staff_check).is_selected()
         if not is_checked and is_staff:
             self._web_driver.click_element(self.add_user_staff_check)
-        self.select_group(groups)
+        if groups != '':
+            self.select_group(groups)
         self.select_permission(permissions)
         self._web_driver.click_element(self.add_user_save_button)
 

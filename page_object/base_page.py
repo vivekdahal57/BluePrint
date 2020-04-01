@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -34,6 +36,21 @@ class BasePage(object):
         self._web_driver.driver.set_page_load_timeout(30)
         self._web_driver.driver.maximize_window()
         self._web_driver.driver.get(url)
+
+    def open_new_tab_and_switch_to_it(self):
+        self._web_driver.driver.execute_script("window.open('', '_blank');")
+        time.sleep(2)
+        handles = self._web_driver.driver.window_handles
+        size = len(handles)
+        self._web_driver.driver.switch_to.window(handles[size - 1])
+
+    def close_current_tab_and_switch_to_old(self):
+        handles = self._web_driver.driver.window_handles
+        size = len(handles)
+        if size > 1:
+            self._web_driver.driver.close()
+            self._web_driver.driver.switch_to.window(handles[size - 2])
+        time.sleep(2)
 
     def get_current_url(self):
         return self._web_driver.driver.current_url

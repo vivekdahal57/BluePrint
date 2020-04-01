@@ -45,7 +45,7 @@ Feature: User attempts to perform ingest and organize operation in ai tool
     When user use correct_username and correct_password
     Then user succeed to login
     Then logged in user can search with collection name automation_collection1 and lands on collection details page
-    Then user can download structured files from the collection details page
+    Then user can download structured files from the collection details page using correct_password
     Then user succeed to logout
 
   Scenario: Staff User can assign batch to the cluster2
@@ -112,7 +112,6 @@ Feature: User attempts to perform ingest and organize operation in ai tool
     Then user can create a draft plan for collection automation_collection2 and for cluster automation_cluster2
     Then user succeed to logout from architect application
 
-
   Scenario: Admin user can verify draft ingest plan from admin panel for cluster2
     Given admin user is in dashboard page after login with admin_username and admin_password
     When admin user can navigate to ingest plans and verify draft plan for automation_cluster2
@@ -142,7 +141,7 @@ Feature: User attempts to perform ingest and organize operation in ai tool
     When user use correct_username and correct_password
     Then user succeed to login
     Then logged in user can search with collection name automation_collection2 and lands on collection details page
-    Then user can download structured files from the collection details page
+    Then user can download structured files from the collection details page using correct_password
     Then user succeed to logout
 
 # Searching in cluster is possible only after transfer batch is moved to the cluster

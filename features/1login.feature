@@ -1,4 +1,20 @@
-Feature: User attempts to Login to Noble Application
+Feature: User attempts to Login to Noble Application. Also creates Periodic tasks and let it execute.
+
+  Scenario: Admin User able to create and run a new periodic task with name Automation_Task0
+    Given admin user is in dashboard page after login with admin_username and admin_password
+    When admin user can create a periodic task with name Automation_Task0 and enable False status
+    Then admin user succeed to logout
+
+  Scenario: Admin User able to update the periodic task with start and expiry time
+    Given admin user is in dashboard page after login with admin_username and admin_password
+    When admin user can enable True to Automation_Task0 periodic task with start end datetime
+    Then admin user succeed to logout
+
+  Scenario: Admin User able to create and run a new periodic task with name Automation_Task1
+    Given admin user is in dashboard page after login with admin_username and admin_password
+    When admin user can create a periodic task with name Automation_Task1 and enable False status
+    Then admin user can run the periodic task Automation_Task1 from list page
+    Then admin user succeed to logout
 
   Scenario Outline: User fail to login in Blueprint
     Given user is in blueprint Login page

@@ -2,6 +2,8 @@ import os
 import time
 
 from behave import step
+
+from features.steps.login import get_password
 from page_object.global_objects import *
 
 
@@ -42,16 +44,27 @@ def search_collection(context, collection_name):
     blueprint_collection_details_page.verify_collection_details_page(collection_name)
 
 
+@step("logged in user can search with collection name {collection_name} and verify not present")
+def search_collection(context, collection_name):
+    blueprint_dashboard_page.search_collection_till_not_found(collection_name)
+
+
 @step("user lands on cluster detail page by searching {cluster_name} cluster name")
 def search_cluster(context, cluster_name):
     blueprint_collection_details_page.click_element(blueprint_collection_details_page.dashboard_cluster_name_text)
     blueprint_cluster_details_page.verify_cluster_details_page(cluster_name)
 
 
-@step("user can download structured files from the collection details page")
-def download_files(context):
-    blueprint_collection_details_page.download_structured_file()
+@step("user can download structured files from the collection details page using {password}")
+def download_files(context, password):
+    blueprint_collection_details_page.download_structured_file(get_password(context, password))
     time.sleep(5)
+
+
+@step("user can click back button during download structured files from the collection details page using {password}")
+def download_files(context, password):
+    blueprint_collection_details_page.download_and_click_back(get_password(context, password))
+    blueprint_dashboard_page.verify_login_pass()
 
 
 @step('logged in user can create collection with name {collection_name} and with file {file_name}')
@@ -62,6 +75,25 @@ def create_collection(context, collection_name, file_name):
     blueprint_dashboard_page.add_new_collection(os.path.join(location, file_name), collection_name)
     blueprint_collection_details_page.verify_collection_details_page(collection_name)
     blueprint_collection_details_page.verify_ingesting_bar(file_name)
+
+
+@step('user closes a browser during file upload of {file_name}')
+def create_collection(context, file_name):
+    blueprint_login_page.open_new_tab_and_switch_to_it()
+    blueprint_login_page.open(context.config.userdata.get('blueprint_url'))
+    location = context.config.userdata.get('upload_file_location')
+    if str(file_name.split("_")[0]).lower() == 'valid':
+        location = os.path.join(context.config.userdata.get('upload_file_location'), 'validFiles')
+    blueprint_dashboard_page.upload_and_cancel_in_10s(os.path.join(location, file_name))
+
+
+@step('user click back button in a browser during file upload of {file_name}')
+def create_collection(context, file_name):
+    location = context.config.userdata.get('upload_file_location')
+    if str(file_name.split("_")[0]).lower() == 'valid':
+        location = os.path.join(context.config.userdata.get('upload_file_location'), 'validFiles')
+    blueprint_dashboard_page.upload_and_click_back(os.path.join(location, file_name))
+    blueprint_dashboard_page.verify_login_pass()
 
 
 @step('user cannot create collection with name {collection_name} with error generating file {file_name}')

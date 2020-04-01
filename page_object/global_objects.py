@@ -1,5 +1,9 @@
+from page_object.admin.AdminAddGroupPage import AdminAddGroupPage
+from page_object.admin.AdminAddPeriodicTaskPage import AdminAddPeriodicTaskPage
+from page_object.admin.AdminGroupsListPage import AdminGroupsListPage
 from page_object.admin.AdminIngestPlansListPage import AdminIngestPlansListPage
 from page_object.admin.AdminIngestResultsListPage import AdminIngestResultsListPage
+from page_object.admin.AdminPeriodicTasksListPage import AdminPeriodicTasksListPage
 from page_object.architect.ArchitectDashboardPage import ArchitectDashboardPage
 from page_object.architect.ArchitectIngestPage import ArchitectIngestPage
 from page_object.base_page import BasePage
@@ -41,3 +45,7 @@ admin_cluster_list_page = AdminClustersListPage(base_page)
 admin_add_cluster_page = AdminAddClusterPage(base_page)
 admin_ingest_plans_list_page = AdminIngestPlansListPage(base_page)
 admin_ingest_result_list_page = AdminIngestResultsListPage(base_page)
+admin_group_list_page = AdminGroupsListPage(base_page)
+admin_add_group_page = AdminAddGroupPage(base_page)
+admin_periodic_task_list_page = AdminPeriodicTasksListPage(base_page)
+admin_add_periodic_task_page = AdminAddPeriodicTaskPage(base_page)
