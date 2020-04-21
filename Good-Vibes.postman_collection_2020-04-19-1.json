@@ -1,0 +1,5212 @@
+{
+	"info": {
+		"_postman_id": "95e663a3-ea38-4116-9333-0e7361b2d560",
+		"name": "Good-Vibes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API V1",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "testermilan@milan.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Milan@123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/signup",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/19",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"19"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Device",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "123132",
+											"type": "text"
+										},
+										{
+											"key": "platform",
+											"value": "ios/android",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/device",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"device"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LogOut User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/logout",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Current User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "Updated Name",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/update_current_user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"update_current_user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Present User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test_name",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test_email",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "subject",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/present_user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"present_user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Present User Ask Question Mail",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test_name",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test_email",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "subject",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/send_mail",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"send_mail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Present User Downloads",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/users/downloads",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"downloads"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Passwords",
+					"item": [
+						{
+							"name": "Password Reset",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "newtest@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "reset_password_token",
+											"value": "276ca5",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "newtest@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "newtest@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/passwords/reset",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"passwords",
+										"reset"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Password Forgot",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "newtest@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/passwords/forgot",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"passwords",
+										"forgot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Password Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer zzz"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "old_password",
+											"value": "",
+											"description": "not required for social logged in user",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "new_password_confirmation",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/passwords/update",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"passwords",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Genres",
+					"item": [
+						{
+							"name": "All Genres",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/genres",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"genres"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Genre",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test 2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/genres",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"genres"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Genre",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/genres/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"genres",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Genre",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test 3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/genres/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"genres",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Genre",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "g@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "g@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/genres/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"genres",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tracks",
+					"item": [
+						{
+							"name": "All Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks?page=some_page&per_page=per_page_count",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Track",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "track_file",
+											"value": "",
+											"type": "text"
+										}
+									],
+									"options": {
+										"formdata": {}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Track",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks/track_id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks",
+										"track_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Track",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "track_file",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks/track_id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks",
+										"track_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Track",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks/track_id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks",
+										"track_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks?category_id=id_of_category&page=some_page&per_page=per_page_count",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "id_of_category"
+										},
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Album Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/tracks?album_id=id_of_album&page=some_page&per_page=per_page_count",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"tracks"
+									],
+									"query": [
+										{
+											"key": "album_id",
+											"value": "id_of_album"
+										},
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Albums",
+					"item": [
+						{
+							"name": "All Albums",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/albums?page=some_page&per_page=per_page_count",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Album",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "display",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/albums",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Album",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/albums/album_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"album_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Album",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozfQ.5Y7DSjYxp3ai95Ds-q5x_OxRbjELxTV7H3-WXjNsQhg"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@one.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@one.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/albums/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Album",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/albums/album_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"album_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Valid Albums",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/albums/valid?page=some_page&per_page=per_page_count",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"valid"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Featured Album",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/albums/featured",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"featured"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add/Remove Tracks in Album",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"add_track_ids\": [1,2,3],\n\t\"remove_track_ids\": [1,2,3]\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/albums/album_id/configure_tracks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"albums",
+										"album_id",
+										"configure_tracks"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Push Notifications",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "All Categories",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/categories?page=some_page&per_page=per_page_count",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "some_page"
+										},
+										{
+											"key": "per_page",
+											"value": "per_page_count"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/categories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/categories/category_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"categories",
+										"category_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/categories/category_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"categories",
+										"category_id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/categories/category_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"categories",
+										"category_id"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Play History",
+					"item": [
+						{
+							"name": "Search Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/play_histories?user_id=1&start_date=2019-03-03&end_date=2020-04-02",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2019-03-03"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-04-02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/play_histories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"play_histories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User's Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/play_histories?user_id=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Active Days",
+					"item": [
+						{
+							"name": "All Active Days",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/active_days",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"active_days"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User's Active Days",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/active_days?user_id=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"active_days"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search User's Active Days",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/active_days?user_id=1&start_date=2020-03-2&end_date=2020-03-30",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"active_days"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2020-03-2"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Session",
+					"item": [
+						{
+							"name": "All Sessions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/sessions?user_id=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"sessions"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Start Session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/sessions/start",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"sessions",
+										"start"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "End Session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/sessions/1-30acc6fc71f089d6f07acd61d6e6275e/end",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"sessions",
+										"1-30acc6fc71f089d6f07acd61d6e6275e",
+										"end"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Session",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/sessions/1-30acc6fc71f089d6f07acd61d6e6275e",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"sessions",
+										"1-30acc6fc71f089d6f07acd61d6e6275e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Sessions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/v1/sessions?start_date=2020-03-28&end_date=2020-03-30",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"v1",
+										"sessions"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2020-03-28"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Notification",
+					"item": [
+						{
+							"name": "List all notifications",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "uuid",
+										"value": "123123123"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/notifications?page={{page}}&per_page={{per_page}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"notifications"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "See all notifications",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "uuid",
+										"value": "123123123"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/notifications/see",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"notifications",
+										"see"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Seen all notifications?",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "uuid",
+										"value": "123123123"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/notifications/seen",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"notifications",
+										"seen"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Favourite Track",
+					"item": [
+						{
+							"name": "All Favourite Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "123123123"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/favourite_tracks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"favourite_tracks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Track to Favourite",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "123123123"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/favourite_tracks/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"favourite_tracks",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Track from Favourites",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "123123123"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/favourite_tracks/remove",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"favourite_tracks",
+										"remove"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Faqs",
+					"item": [
+						{
+							"name": "All Faqs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "12"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/faqs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"faqs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Faq",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "12"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "test content is here",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/faqs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"faqs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Faq",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "12"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/faqs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"faqs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Faq",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "12"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "test content is here 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/faqs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"faqs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Faq",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "UUID",
+										"value": "12"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Test",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "test content is here",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/faqs/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"faqs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Pages",
+					"item": [
+						{
+							"name": "All Pages",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/pages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"pages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Page",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Page 1",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "lets describe page 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/pages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"pages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Page",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/pages/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"pages",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Page",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Page 2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "lets describe page 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/pages/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"pages",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Page",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/pages/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"pages",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ADMIN V2",
+			"item": [
+				{
+					"name": "Activity Log",
+					"item": [
+						{
+							"name": "All Activity Logs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/activity_logs",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"activity_logs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User's Activity Logs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/activity_logs/user?user_id=24799",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"activity_logs",
+										"user"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "24799"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tracks",
+					"item": [
+						{
+							"name": "All Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks?filters={\"name\": \"test 3\"}&sorts={\"created_at\": \"desc\"}&per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"name\": \"test 3\"}",
+											"description": "Add a filter with column name, track_code if necessary, Omit this if not needed"
+										},
+										{
+											"key": "sorts",
+											"value": "{\"created_at\": \"desc\"}",
+											"description": "Adds sorting by name, id, created_at if necessary, Omit this if not needed"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}",
+											"description": "Number of items per page"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "Page Number"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Popular Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks/popular?per_page=1&page=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks",
+										"popular"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "It is based on number of times it is played"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Track",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks/267",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks",
+										"267"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Track",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "admin test 2",
+											"type": "text"
+										},
+										{
+											"key": "track_file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "description",
+											"value": "description here",
+											"type": "text"
+										},
+										{
+											"key": "composer_name",
+											"value": "CnP",
+											"type": "text"
+										},
+										{
+											"key": "track_code",
+											"value": "code of track",
+											"type": "text"
+										},
+										{
+											"key": "disabled",
+											"value": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Track",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "admin test 3",
+											"type": "text"
+										},
+										{
+											"key": "track_file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "description",
+											"value": "description here",
+											"type": "text"
+										},
+										{
+											"key": "composer_name",
+											"value": "CnP",
+											"type": "text"
+										},
+										{
+											"key": "track_code",
+											"value": "code of track",
+											"type": "text"
+										},
+										{
+											"key": "disabled",
+											"value": "true/false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks/269",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks",
+										"269"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Track",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/tracks/272",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"tracks",
+										"272"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Tracks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									},
+									{
+										"key": "SessionId",
+										"value": "d5b6f111c35530661e698bdac8f1e176",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/tracks?page={{page}}&per_page={{per_page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tracks"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}"
+										}
+									]
+								},
+								"description": "sorted by lates"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users?filters={\"full_name\": \"\"}&sorts={\"created_at\": \"desc\"}&per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"full_name\": \"\"}",
+											"description": "Add a filter with column name, track_code if necessary, Omit this if not needed"
+										},
+										{
+											"key": "sorts",
+											"value": "{\"created_at\": \"desc\"}",
+											"description": "Adds sorting by name, id, created_at if necessary, Omit this if not needed"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}",
+											"description": "Number of items per page"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "Page Number"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "admin test 2",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "email",
+											"value": "email1",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": "CnP",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "code of track",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users/24801",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users",
+										"24801"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "admin test 3",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "email",
+											"value": "email1",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": "CnP",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "code of track",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users/24801",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users",
+										"24801"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users/24801",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users",
+										"24801"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Present User With Dashboard",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users/present_user",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users",
+										"present_user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customer Growth",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/users/customers_growth",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"users",
+										"customers_growth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Subscriptions",
+					"item": [
+						{
+							"name": "All Subscriptions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/subscriptions?filters={\"subs\": \"\"}&sorts={\"created_at\": \"desc\"}&per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"subscriptions"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"subs\": \"\"}",
+											"description": "Add a filter with column name, track_code if necessary, Omit this if not needed"
+										},
+										{
+											"key": "sorts",
+											"value": "{\"created_at\": \"desc\"}",
+											"description": "Adds sorting by name, id, created_at if necessary, Omit this if not needed"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}",
+											"description": "Number of items per page"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "Page Number"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Subscription",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "admin test 2",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "email",
+											"value": "email1",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": "CnP",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "code of track",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "true/false",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/subscriptions/862",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"subscriptions",
+										"862"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Subscription",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "subs",
+											"value": "monthly",
+											"description": "monthly/yearly",
+											"type": "text"
+										},
+										{
+											"key": "purchase_time",
+											"value": "2019-01-19",
+											"description": "time of purchase",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "24800",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/subscriptions",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Genres",
+					"item": [
+						{
+							"name": "All Genres",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/genres?filters={\"name\": \"\"}&sorts={\"created_at\": \"desc\"}&per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"genres"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"name\": \"\"}",
+											"description": "Add a filter with column name, track_code if necessary, Omit this if not needed"
+										},
+										{
+											"key": "sorts",
+											"value": "{\"created_at\": \"desc\"}",
+											"description": "Adds sorting by name, id, created_at if necessary, Omit this if not needed"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}",
+											"description": "Number of items per page"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "Page Number"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Genre",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Genre 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/genres",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"genres"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Genre",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Genre 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/genres/11",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"genres",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Genre",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Genre 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/genres/11",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"genres",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Genre",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Genre 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/genres/11",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"genres",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "All Categories",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/categories?filters={\"name\": \"\"}&sorts={\"created_at\": \"desc\"}&per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"name\": \"\"}",
+											"description": "Add a filter with column name, track_code if necessary, Omit this if not needed"
+										},
+										{
+											"key": "sorts",
+											"value": "{\"created_at\": \"desc\"}",
+											"description": "Adds sorting by name, id, created_at if necessary, Omit this if not needed"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}",
+											"description": "Number of items per page"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "Page Number"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "genre_id",
+											"value": "2",
+											"description": "id of genre",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "new categoru",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "description of category",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "genre_id",
+											"value": "2",
+											"description": "id of genre",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "new categoru",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "description of category",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/categories/28",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"categories",
+										"28"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/categories/28",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"categories",
+										"28"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Category",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/categories/28",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"categories",
+										"28"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Active Days",
+					"item": [
+						{
+							"name": "Get Active Days",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/active_days?user_id=1&page={{page}}&per_page={{per_page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"active_days"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "per_page",
+											"value": "{{per_page}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Play History",
+					"item": [
+						{
+							"name": "All Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/play_histories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"play_histories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/play_histories?user_id=1&start_date=2019-03-03&end_date=2020-04-02",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2019-03-03"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-04-02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/play_histories/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"play_histories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User's Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/play_histories?user_id=1&start_date=2019-03-03&end_date=2020-04-02",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2019-03-03"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-04-02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Track's Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/play_histories?track_id=1&start_date=2019-03-03&end_date=2020-04-02",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "track_id",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2019-03-03"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-04-02"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Session",
+					"item": [
+						{
+							"name": "All Sessions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/push_notifications",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"push_notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Session",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/sessions/1-30acc6fc71f089d6f07acd61d6e6275e",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"sessions",
+										"1-30acc6fc71f089d6f07acd61d6e6275e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Sessions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/sessions?start_date=2020-03-28&end_date=2020-03-30",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"sessions"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2020-03-28"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Push Notification",
+					"item": [
+						{
+							"name": "All Push Notifications",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/push_notifications?filters={\"title\": \"test\"}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"push_notifications"
+									],
+									"query": [
+										{
+											"key": "filters",
+											"value": "{\"title\": \"test\"}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Push Notification",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "testing from admin",
+											"description": "title of push notification",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "description from admin",
+											"description": "description of push notification",
+											"type": "text"
+										},
+										{
+											"key": "data[track_id]",
+											"value": "1",
+											"description": "data can including any extra parameters required in push notification",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "image file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "user_type",
+											"value": "individual",
+											"description": "individual/all/android/ios",
+											"type": "text"
+										},
+										{
+											"key": "subscription_type",
+											"value": "free",
+											"description": "free/monthly/yearly can be nil",
+											"type": "text"
+										},
+										{
+											"key": "user_ids[]",
+											"value": "24816",
+											"description": "this should only be present if user_type is individual",
+											"type": "text"
+										},
+										{
+											"key": "scheduled",
+											"value": "true",
+											"description": "true/false, default is false",
+											"type": "text"
+										},
+										{
+											"key": "scheduled_at",
+											"value": "2020-04-19 13:52:27 UTC",
+											"description": "datetime",
+											"type": "text"
+										},
+										{
+											"key": "recurring",
+											"value": "false",
+											"description": "true/false, default is false",
+											"type": "text"
+										},
+										{
+											"key": "recurring_every_unit",
+											"value": "days",
+											"description": "seconds/minutes/hours/days/weeks/months/years, only should be present if recurring",
+											"type": "text"
+										},
+										{
+											"key": "recurring_every_unit_no",
+											"value": "1",
+											"description": "no of recrurring days, only should be present if recurring",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/push_notifications",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"push_notifications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a Push Notification Record",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "testing from admin",
+											"description": "title of push notification",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "description from admin",
+											"description": "description of push notification",
+											"type": "text"
+										},
+										{
+											"key": "data[track_id]",
+											"value": "1",
+											"description": "data can including any extra parameters required in push notification",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "image file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "user_type",
+											"value": "individual",
+											"description": "individual/all/android/ios",
+											"type": "text"
+										},
+										{
+											"key": "subscription_type",
+											"value": "free",
+											"description": "free/monthly/yearly can be nil",
+											"type": "text"
+										},
+										{
+											"key": "user_ids[]",
+											"value": "24816",
+											"description": "this should only be present if user_type is individual",
+											"type": "text"
+										},
+										{
+											"key": "scheduled",
+											"value": "true",
+											"description": "true/false, default is false",
+											"type": "text"
+										},
+										{
+											"key": "scheduled_at",
+											"value": "2020-04-19 13:52:27 UTC",
+											"description": "datetime",
+											"type": "text"
+										},
+										{
+											"key": "recurring",
+											"value": "false",
+											"description": "true/false, default is false",
+											"type": "text"
+										},
+										{
+											"key": "recurring_every_unit",
+											"value": "days",
+											"description": "seconds/minutes/hours/days/weeks/months/years, only should be present if recurring",
+											"type": "text"
+										},
+										{
+											"key": "recurring_every_unit_no",
+											"value": "1",
+											"description": "no of recrurring days, only should be present if recurring",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/push_notifications/17",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"push_notifications",
+										"17"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Stop Recurring Notifications",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "testing from admin",
+											"description": "title of push notification",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "description from admin",
+											"description": "description of push notification",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "data[track_id]",
+											"value": "1",
+											"description": "data can including any extra parameters required in push notification",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "image",
+											"description": "image file",
+											"type": "file",
+											"src": "/Users/milanpudasaini/Desktop/Screen Shot 2020-03-17 at 10.07.43 PM.png",
+											"disabled": true
+										},
+										{
+											"key": "user_type",
+											"value": "individual",
+											"description": "individual/all/android/ios",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "subscription_type",
+											"value": "free",
+											"description": "free/monthly/yearly can be nil",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "user_ids[]",
+											"value": "24816",
+											"description": "this should only be present if user_type is individual",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scheduled",
+											"value": "true",
+											"description": "true/false, default is false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scheduled_at",
+											"value": "2020-04-19 14:23:21 UTC",
+											"description": "datetime",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "recurring",
+											"value": "false",
+											"description": "true/false, default is false, update this to false if you want to stop recurring notiification",
+											"type": "text"
+										},
+										{
+											"key": "recurring_every_unit",
+											"value": "minutes",
+											"description": "seconds/minutes/hours/days/weeks/months/years, only should be present if recurring",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "recurring_every_unit_no",
+											"value": "1",
+											"description": "no of recrurring days, only should be present if recurring",
+											"type": "text",
+											"disabled": true
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/v2/push_notifications/18",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"v2",
+										"push_notifications",
+										"18"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API V2",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Facebook Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "provider",
+											"value": "facebook",
+											"type": "text"
+										},
+										{
+											"key": "access_token",
+											"value": "eyJhbGciOiJSUzI1NiIsImtpZCIkk6IjI1N2Y2YTU4MjhkMWU0YTNhNmEwM2ZjZDFhMjQ2MWRiOTU5M2U2MjQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTU3MDQ3NDQ5NjUzODI5NjY5OTIiLCJlbWFpbCI6Im1pbGFuLnB1ZGFzYWluaTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJlNjQ0TXVjZXZVMGsybFNzMjEzWkxBIiwiaWF0IjoxNTg2MDk3ODM5LCJleHAiOjE1ODYxMDE0Mzl9.KKOfixzBdB4Nk65sLXn2ATtA_pJtu4Jd-RgoRPYL8uF6lqsOg9iUhtMe2XUf22wjGIxBE4NDjXwUy-kD9kxxURjcxBsQw_OelreOXFLG1L6tjeQZpvUFRWScWSvfWhMG2NgP0UNYTMIvqYxgwxAr3RePvgUT84DyMZKookjUhTKCfES95GKM6j8f0iUo8ZHrnhZOp9ClM4sNNncsoGcz-3BrcDTgPtSdJN2kvT9wkJzIe3cTJb1XIZk4juxOQWWxsTdzInuZWj7lakTH-j-WxFtFUcWUzlofUla7jGVs9IoDJuXNtcwvf9UDtJZo3JVlAJ4p79O4G4mYFBlPLa3GIQ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Google Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "provider",
+											"value": "google",
+											"type": "text"
+										},
+										{
+											"key": "access_token",
+											"value": "eyJhbGciOiJSUzI1NiIsImtpZCIkk6IjI1N2Y2YTU4MjhkMWU0YTNhNmEwM2ZjZDFhMjQ2MWRiOTU5M2U2MjQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc0MDg3MTgxOTIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTU3MDQ3NDQ5NjUzODI5NjY5OTIiLCJlbWFpbCI6Im1pbGFuLnB1ZGFzYWluaTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJlNjQ0TXVjZXZVMGsybFNzMjEzWkxBIiwiaWF0IjoxNTg2MDk3ODM5LCJleHAiOjE1ODYxMDE0Mzl9.KKOfixzBdB4Nk65sLXn2ATtA_pJtu4Jd-RgoRPYL8uF6lqsOg9iUhtMe2XUf22wjGIxBE4NDjXwUy-kD9kxxURjcxBsQw_OelreOXFLG1L6tjeQZpvUFRWScWSvfWhMG2NgP0UNYTMIvqYxgwxAr3RePvgUT84DyMZKookjUhTKCfES95GKM6j8f0iUo8ZHrnhZOp9ClM4sNNncsoGcz-3BrcDTgPtSdJN2kvT9wkJzIe3cTJb1XIZk4juxOQWWxsTdzInuZWj7lakTH-j-WxFtFUcWUzlofUla7jGVs9IoDJuXNtcwvf9UDtJZo3JVlAJ4p79O4G4mYFBlPLa3GIQ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "testermilan1123111@milan.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Milan@123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/signup",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm/Activate User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/confirmations/{{confirmation_token}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"confirmations",
+										"{{confirmation_token}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/password_resets",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"password_resets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "devilpersonnel@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/password_resets/{{reset_password_token}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"password_resets",
+										"{{reset_password_token}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tracks",
+					"item": [
+						{
+							"name": "All Tracks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									},
+									{
+										"key": "SessionId",
+										"value": "d5b6f111c35530661e698bdac8f1e176",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/tracks",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tracks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Track",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									},
+									{
+										"key": "SessionId",
+										"type": "text",
+										"value": "d5b6f111c35530661e698bdac8f1e176"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/tracks/268",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tracks",
+										"268"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Play Track",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									},
+									{
+										"key": "SessionId",
+										"value": "d5b6f111c35530661e698bdac8f1e176",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "a@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/tracks/268/play",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"tracks",
+										"268",
+										"play"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sessions",
+					"item": [
+						{
+							"name": "Get Heartbeat Current Session",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									},
+									{
+										"key": "SessionId",
+										"value": "b118b204231896a00b5288a79dbfefb0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/sessions/heartbeat",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"sessions",
+										"heartbeat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Sessions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									},
+									{
+										"key": "SessionId",
+										"value": "b118b204231896a00b5288a79dbfefb0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/sessions?per_page={{per_page}}&page={{page}}&start_date='2020-03-01'&end_date='2020-03-02'",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"sessions"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "{{per_page}}"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "start_date",
+											"value": "'2020-03-01'"
+										},
+										{
+											"key": "end_date",
+											"value": "'2020-03-02'"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Session",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									},
+									{
+										"key": "SessionId",
+										"value": "b118b204231896a00b5288a79dbfefb0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/sessions/b118b204231896a00b5288a79dbfefb0",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"sessions",
+										"b118b204231896a00b5288a79dbfefb0"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Play History",
+					"item": [
+						{
+							"name": "All Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/play_histories?start_date=2019-03-03&end_date=2020-04-02",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"play_histories"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2019-03-03"
+										},
+										{
+											"key": "end_date",
+											"value": "2020-04-02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Play History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/play_histories/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"play_histories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Play History",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/play_histories/6",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"play_histories",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Favourite Tracks",
+					"item": [
+						{
+							"name": "All Favourite Tracks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/favourite_tracks",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"favourite_tracks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Track to Favourite",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/favourite_tracks/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"favourite_tracks",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Track from Favourites",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/favourite_tracks/remove",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"favourite_tracks",
+										"remove"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Downloads",
+					"item": [
+						{
+							"name": "All Downloads",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/downloads?per_page={{per_page}}&page={{page}}",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"downloads"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "{{per_page}}"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Download",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/downloads",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"downloads"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Finish Download",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/downloads/23/finish",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"downloads",
+										"23",
+										"finish"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Download",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/downloads/23/delete",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"downloads",
+										"23",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Download",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.bMhUyqFnTzfATv4WiDBvtti_WNjWOKUpGMBt2dmDO4A",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "track_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v2/downloads/23/cancel",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"downloads",
+										"23",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "00a18ee1-289c-4d08-a358-d1c09e682f74",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2b9642c9-fc45-4698-aedb-0ec8481b8394",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7bf5c31c-eac7-4023-bc4b-5d710d482aa4",
+			"key": "per_page",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "dae04b0b-0f24-4ad5-836e-1bfad316de25",
+			"key": "page",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
